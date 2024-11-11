@@ -1,7 +1,8 @@
 using System;
 
 namespace ProjectManagementSystem;
- 
+
+//this is the class Employee 
 public abstract class Employee
 {
     public int EmployeeId;
