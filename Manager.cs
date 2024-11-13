@@ -1,21 +1,16 @@
 namespace ProjectManagementSystem;
 
-public class Manager //: Employee //inherit from Employee abstract class (if manager is also an employee)
+public class Manager : Employee //inherit from Employee abstract class 
 {
-    //private list to store tasks assigned to the manager (if we want to have manager tasks)
+    //private list to store tasks assigned to the manager (not needed if List is added to Employee class)
     //private List<Task> _tasks = new List<Task>();
-    
-    private string _name;
-    private int _id;
+ 
     
     //constructor for Manager that takes in name and ID
     //(if contructor in Employee class has a name and ID then manager inherits these, unless we don't make manager an "employee")
     //"base" keyword calls the constructor in the Employee class, initializing these properties
-    public Manager(string name, int id) // : base(name, id) {}
-    {
-        _name = name;
-        _id = id;
-    }  
+    public Manager(int id, string name) : base(id, name) {}  //nothing needs to be added to base constructor here so empty brakets
+ 
 
     //create method that takes in an Employee and a Task so that a manager can assign a task to an employee
     public void AssignTask(Employee employee, Task task)
@@ -83,7 +78,7 @@ public class Manager //: Employee //inherit from Employee abstract class (if man
             foreach (var task in employee.GetTask()) //for each task call getter (assuming employee has GetTasks() method
             {
                 //print task Id, title and status
-                Console.WriteLine($"Task number: {task.Id}, Title: {task.Title}, Status: {task.Status}");
+                Console.WriteLine($"Task number: {task.id}, Title: {task.description}, Status: {task.status}");
             }
         }
     }
