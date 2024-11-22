@@ -1,29 +1,38 @@
+// CLASS EMPLOYEE
+
 using System;
 
 namespace ProjectManagementSystem;
 
-//this is the class Employee 
+// incorporating enum, a special class that represents a group of unchangeable variables
+
+public enum TaskStatus
+{
+    ToDo,
+    InProgress,
+    Completed
+}
+
+// Abstract Employee class (which cannot be instantiated)
+
 public abstract class Employee
 {
-    public int EmployeeId;
-    public string name;
-    public string role;
- 
-    public Employee(int id, string name)
+    public string EmployeeId { get; set; }
+    public string Name { get; set; }
+    public string Role { get; set; }
+
+    // Constructor, method called when an object is created
+
+    public Employee(string employeeId, string name, string role)
     {
-        EmployeeId = id;
-        name = name;
+        EmployeeId = employeeId;
+        Name = name;
+        Role = role;
     }
-}
- 
-public class Task
-{
-    public int TaskID;
-    public string Description;
- 
-    public Task(int id, string description)
-    {
-        TaskID = id;
-        Description = description;
-    }
+
+
+    // Abstract methods for class Employee showing on Class diagram
+
+    public abstract void GenerateReport();
+    public abstract void ExecuteRole();
 }
