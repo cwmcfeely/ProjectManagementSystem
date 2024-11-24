@@ -6,21 +6,20 @@ namespace ProjectManagementSystem
         public string ProgrammingLanguage { get; set; }
 
         // Constructor that calls the base class constructor and initializes programmingLanguage
-        public Developer(string employeeId, string name, string programmingLanguage) : base(employeeId, name, "Developer")
+        public Developer(int employeeId, string firstname, string lastname, string programmingLanguage) : base(employeeId, firstname, lastname, "Developer")
         {
             ProgrammingLanguage = programmingLanguage;
         }
-
         // Implementation of abstract method GenerateReport
         public override void GenerateReport()
         {
-            Console.WriteLine($"{Name} is generating a developer-specific report.");
+            Console.WriteLine($"{firstName} is generating a developer-specific report.");
         }
 
         // Implementation of abstract method ExecuteRole
         public override void ExecuteRole()
         {
-            Console.WriteLine($"{Name} is writing code in {ProgrammingLanguage}.");
+            Console.WriteLine($"{firstName} is writing code in {ProgrammingLanguage}.");
         }
     }
 }

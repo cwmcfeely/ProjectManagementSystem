@@ -8,7 +8,16 @@ namespace ProjectManagementSystem
         // Methods to be implemented by classes implementing this interface
         void UpdateStatus();
         //void AddTask(); Removed as only the Manager can add a task
-        void GetTask();
+
+                    // Public method to view all tasks (accessible by all subclasses)
+        void ViewTasks()
+    {
+     //   Console.WriteLine($"Tasks for {firstName}:");
+       // foreach (var task in Tasks)
+        //{
+        //    Console.WriteLine($"- Task ID: {task.ID}, Description: {task.Description}, Status: {task.Status}");
+        //}
+    }
         void GetTaskById();
         void UpdateProjectStatus();
         void CompleteTask();

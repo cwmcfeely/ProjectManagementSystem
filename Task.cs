@@ -6,20 +6,28 @@ using System;
 
 namespace ProjectManagementSystem;
 
+// incorporating enum, a special class that represents a group of unchangeable variables
+
+public enum TaskStatus
+{
+    ToDo,
+    InProgress,
+    Completed
+}
 public class Task
 {
-    public string ID { get; set; } // get returns the value (of the ID property in this case)
+    public int ID { get; set; } // get returns the value (of the ID property in this case)
     public string Description { get; set; }
-    public string Status { get; set; } // set assigns a value (to the Status property)
+    public TaskStatus Status { get; set; } // Status of the task enum
     public string Priority { get; set; }
 
     // Constructor which is used to add initial values to the attributes
 
-    public Task(string id, string description, string status, string priority)
+    public Task(int id, string description, string priority)
     {
         ID = id;
         Description = description;
-        Status = status;
         Priority = priority;
+        Status = TaskStatus.ToDo; // Default status of a ticket is ToDo
     }
 }
