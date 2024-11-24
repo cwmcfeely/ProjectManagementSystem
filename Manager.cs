@@ -1,70 +1,71 @@
 namespace ProjectManagementSystem;
 
-public class Manager : Employee //inherit from Employee abstract class 
+public class Manager : Employee, ITrackable //inherit from Employee abstract class and implement ITrackable interface
 {
-    //private list to store tasks assigned to the manager (not needed if List is added to Employee class)
-    //private List<Task> _tasks = new List<Task>();
- 
-    
     //constructor for Manager that takes in name and ID
-    //(if contructor in Employee class has a name and ID then manager inherits these, unless we don't make manager an "employee")
     //"base" keyword calls the constructor in the Employee class, initializing these properties
-    public Manager(int id, string name) : base(id, name) {}  //nothing needs to be added to base constructor here so empty brakets
- 
-
+    public Manager(int employeeId, string firstName, string lastName) 
+        : base(employeeId, firstName, lastName, "Manager")
+    {
+    }
+    
     //create method that takes in an Employee and a Task so that a manager can assign a task to an employee
     public void AssignTask(Employee employee, Task task)
     {
-        //_tasks.Add(task); //add task to manager list of tasks
+        employee.AddTask(task); // Use the protected AddTask from Employee
+        Console.WriteLine($"Task '{task.Description}' assigned to {employee.firstName}.");
         
-        //in Employee we assume we have an AddTask method with task.Add(task) inside to add a task
-        employee.AddTask(task); //add task to an employee (assuming employee has AddTask method to add the task to its list)
-        Console.WriteLine($"Manager assigned task'{task.Title}' to {employee.Name}");
+        //verify if the task is actually assigned
+        foreach (var t in employee.Tasks)
+        {
+            Console.WriteLine($"Assigned Task: {t.ID} - {t.Description} to {employee.firstName}.");
+        }
     }
     
     //update task status (Manager can do this for any employee). takes params emplyee name and task if
     public void UpdateTaskStatus(Employee employee, int taskId)
     {
-        //find the task in employee's task list by matching task Id
-        Task task = employee.GetTaskById(taskId);
-        if (task != null) //if the id exists for that specific employee
+        //fetch and update task status from the employee's task list
+        List<Task> tasks = employee.Tasks; 
+        //using LINQ method to find task by id (this searches in the list of tasks to find if any of them mathes the condition which is ID ==taskID)
+        Task task = tasks.FirstOrDefault(t => t.ID == taskId); 
+        if (task != null)
         {
-            //show menu to manager to select new task status
             Console.WriteLine("Select a status for the task:");
             Console.WriteLine("1. To Do");
             Console.WriteLine("2. In Progress");
             Console.WriteLine("3. Completed");
-            
-            //get Manager's input
+
             string input = Console.ReadLine();
-            
-            //determine the status based on the input
-            TaskStatus selectedStatus; //declare variable to store the status 
+            TaskStatus selectedStatus;
+
+            //handle user input for task status
             switch (input)
-            { //here we assume we created an enum "TaskStatus" in the Task Class that has defined the statuses 
+            {
                 case "1":
-                    selectedStatus = TaskStatus.ToDo; 
+                    selectedStatus = TaskStatus.ToDo;
                     break;
                 case "2":
-                    selectedStatus = TaskStatus.InProgress; 
+                    selectedStatus = TaskStatus.InProgress;
                     break;
                 case "3":
-                    selectedStatus = TaskStatus.Completed; 
+                    selectedStatus = TaskStatus.Completed;
                     break;
                 default:
-                    Console.WriteLine("Invalid input. Please choose a valid option");
-                    return; //return if invalid input
+                    Console.WriteLine("Invalid input. Status not updated.");
+                    return;
             }
 
-            //update the task status
-            task.UpdateStatus(selectedStatus);
-            Console.WriteLine($"Manager changed task '{task.Title}' status to {selectedStatus} for {employee.Name}");
+            //update task status and notify
+            task.Status = selectedStatus; //update task status
+            Console.WriteLine($"Task '{task.Description}' status updated to {selectedStatus} for {employee.firstName}.");
         }
         else
         {
-            Console.WriteLine($"Task with ID {taskId} not found for {employee.Name}");
+            Console.WriteLine($"Task with ID {taskId} not found for {employee.firstName}.");
         }
     }
+
 
     //create method to create a report on the tasks for each employee. Method takes in list of employees as parameter
     public void CreateReport(List<Employee> employees)
@@ -74,12 +75,68 @@ public class Manager : Employee //inherit from Employee abstract class
         {
             //print name of the employee amd then loop through tasks assigned to each employee
             //\n prints in new line
-            Console.WriteLine($"\nEmployee: {employee.Name}");
-            foreach (var task in employee.GetTask()) //for each task call getter (assuming employee has GetTasks() method
+            Console.WriteLine($"\nEmployee: {employee.firstName} {employee.lastName}");
+            foreach (var task in employee.Tasks) //for each task in the tasks of the employee
             {
-                //print task Id, title and status
-                Console.WriteLine($"Task number: {task.id}, Title: {task.description}, Status: {task.status}");
+                //print details below
+                Console.WriteLine($"Task number: {task.ID}, Title: {task.Description}, Status: {task.Status}, Priority: {task.Priority}");
             }
         }
+    }
+
+    public void UpdateStatus()
+    {
+        throw new NotImplementedException();
+    }
+    
+    public void UpdateStatus(TaskStatus selectedStatus)
+    {
+        //placeholder for method
+        Console.WriteLine($"Project status updated to: {selectedStatus}");
+    }
+
+    public void ViewTasks()
+    {
+
+        Console.WriteLine($"Tasks assigned to you: ");
+        foreach (var task in Tasks)
+        {
+            Console.WriteLine($"Task ID: {task.ID}, Description: {task.Description}, Status: {task.Status}, Priority: {task.Priority}");
+        }
+    }
+
+    //Inherit from Employee class
+    public override void GenerateReport()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void ExecuteRole()
+    {
+        Console.WriteLine("Manager is performing manager role.");
+    }
+
+    //inherited from ITrackable
+    public string ProjectStatus { get; set; } 
+    
+    public void GetTask()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void GetTaskById()
+    {
+        //placeholder
+        Console.WriteLine("Not yet implemented.");
+    }
+
+    public void UpdateProjectStatus()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void CompleteTask()
+    {
+        throw new NotImplementedException();
     }
 }
