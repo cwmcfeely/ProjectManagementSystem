@@ -18,7 +18,7 @@ namespace ProjectManagementSystem
         //    Console.WriteLine($"- Task ID: {task.ID}, Description: {task.Description}, Status: {task.Status}");
         //}
     }
-        void GetTaskById();
+        Task GetTaskById(int taskId);
         void UpdateProjectStatus();
         void CompleteTask();
     }

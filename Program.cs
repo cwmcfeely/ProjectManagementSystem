@@ -18,9 +18,9 @@ class Program
         manager.ExecuteRole();
         
         Task firstTask = new Task(1234, "Fix Bug", "High");
-        manager.AssignTask(dev, firstTask); //assign task to dev
-        manager.UpdateTaskStatus(dev, 1234);
         
+        manager.AssignTask(dev, firstTask); //assign task to dev
+        manager.UpdateStatus();//update task status as a manager
         manager.GenerateReport();
     }
 } 
