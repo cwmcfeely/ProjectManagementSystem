@@ -2,6 +2,10 @@ namespace ProjectManagementSystem;
 
 public class Manager : Employee, ITrackable //inherit from Employee abstract class and implement ITrackable interface
 {
+    
+    //private List<Employee> _employees;
+    
+    
     //constructor for Manager that takes in name and ID
     //"base" keyword calls the constructor in the Employee class, initializing these properties
     public Manager(int employeeId, string firstName, string lastName) 
@@ -66,24 +70,6 @@ public class Manager : Employee, ITrackable //inherit from Employee abstract cla
         }
     }
 
-
-    //create method to create a report on the tasks for each employee. Method takes in list of employees as parameter
-    public void CreateReport(List<Employee> employees)
-    {
-        //loop through each employee in teh list to find their tasks
-        foreach (var employee in employees)
-        {
-            //print name of the employee amd then loop through tasks assigned to each employee
-            //\n prints in new line
-            Console.WriteLine($"\nEmployee: {employee.firstName} {employee.lastName}");
-            foreach (var task in employee.Tasks) //for each task in the tasks of the employee
-            {
-                //print details below
-                Console.WriteLine($"Task number: {task.ID}, Title: {task.Description}, Status: {task.Status}, Priority: {task.Priority}");
-            }
-        }
-    }
-
     public void UpdateStatus()
     {
         throw new NotImplementedException();
@@ -105,10 +91,19 @@ public class Manager : Employee, ITrackable //inherit from Employee abstract cla
         }
     }
 
-    //Inherit from Employee class
+    //Inherit from Employee class (Polymorphism, this method does something different for each employee)
     public override void GenerateReport()
     {
-        throw new NotImplementedException();
+        Console.WriteLine("Manager is generating a report for all employees.");
+
+        foreach (var employee in Employee.GetAllEmployees())
+        {
+            Console.WriteLine($"\nEmployee: {employee.firstName} {employee.lastName}");
+            foreach (var task in employee.Tasks)
+            {
+                Console.WriteLine($"Task number: {task.ID}, Title: {task.Description}, Status: {task.Status}, Priority: {task.Priority}");
+            }
+        }
     }
 
     public override void ExecuteRole()

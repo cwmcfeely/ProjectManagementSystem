@@ -8,6 +8,10 @@ namespace ProjectManagementSystem;
 
 public abstract class Employee
 {
+    
+    //creating a list to store employees (this is for Manager specific mathod to generate report)
+    private static List<Employee> AllEmployees = new List<Employee>();
+    
     public int EmployeeId { get; set; } // Updating id to be an int
     public string firstName { get; set; }
     public string lastName { get; set; }
@@ -25,6 +29,15 @@ public abstract class Employee
         lastName = lastname;
         Role = role;
         Tasks = new List<Task>(); // Initialize the task list
+        
+        //add new employee to employee list automatically
+        AllEmployees.Add(this);
+    }
+    
+    //since list of employees is private but manager needs to access it for reports, creating public method that returns the private list (encapsulation)
+    public static List<Employee> GetAllEmployees()
+    {
+        return AllEmployees;
     }
 
     // Protected AddTask method (only accesible to the sub classes, but will only be used by Manager)
