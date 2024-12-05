@@ -80,9 +80,7 @@ namespace ProjectManagementSystem
         {
             foreach (var defect in DefectsReported) // Iterate through each test case in the list of DefectsReported
             {
-                Console.WriteLine(
-                    $"Defect {defect.DefectID}: {defect.Description} - Status: {defect.Status}" // print the statement
-                );
+                defect.DisplayDefectDetails();
             }
         }
 
@@ -91,15 +89,9 @@ namespace ProjectManagementSystem
         {
             Console.WriteLine($"Generating report for QA Engineer {firstName}..."); // print the statement
             Console.WriteLine("Test Cases:"); // print the statemnet
-            foreach (var testCase in TestCases) // Iterate through each test case in the list of test cases
-            {
-                testCase.DisplayTestCaseDetails(); // call the method to display testcase details from the list
-            }
+            ViewTestCases();// call the method to view testcases from the list
             Console.WriteLine("Defects:"); // print the statement
-            foreach (var defect in DefectsReported) // Iterate through each test case in the list of DefectsReported
-            {
-                defect.DisplayDefectDetails(); // call the method to display defect details from the Defects reported list
-            }
+            ViewDefects();// call the method to view defects from the list
         }
 
         // Implementation of abstract methods
