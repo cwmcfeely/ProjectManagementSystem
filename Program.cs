@@ -32,6 +32,12 @@
             intern.CompleteTask(firstTask);
             intern.GenerateReport();
 
+
+            QAEngineer qAEngineer = new QAEngineer(102, "Jothika", "Tamilarasan");
+            qAEngineer.ExecuteRole();
+            TestCase testCase1 = qAEngineer.CreateTestCase(1, "Verify Login", "Success");
+            TestCase testCase2 = qAEngineer.CreateTestCase(2, "Verify Logout", "Success");
+            qAEngineer.GenerateReport();
         }
     }
 }
