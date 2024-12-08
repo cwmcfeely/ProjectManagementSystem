@@ -1,3 +1,5 @@
+using ProjectManagementSystem;
+
 public class PersonalReport : Report
 {
     private string Role { get; set; }
