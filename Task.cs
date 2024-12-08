@@ -20,6 +20,8 @@ public class Task
     public string Description { get; set; }
     public TaskStatus Status { get; set; } // Status of the task enum
     public string Priority { get; set; }
+    
+    public Project Project { get; set; } //adding this to assign tasks to projects by referencing a project property here
 
     // Constructor which is used to add initial values to the attributes
 
