@@ -13,7 +13,7 @@ namespace ProjectManagementSystem
         }
 
         // Method to create a new test case
-        public TestCase CreateTestCase(int testCaseID, string description, string expectedResult)
+        public TestCase CreateTestCase(int testCaseID, string description, string expectedResult, Task relatedTask)
         {
             if (testCaseID <= 0) // Validate testCase ID
             {
@@ -32,9 +32,9 @@ namespace ProjectManagementSystem
                 Console.WriteLine("Error: Expected result cannot be empty."); // print the statement
                 return null; // Return null to indicate failure
             }
-            var testCase = new TestCase(testCaseID, description, expectedResult); // create a new testCase object
+            var testCase = new TestCase(testCaseID, description, expectedResult, relatedTask); // create a new testCase object
             TestCases.Add(testCase); // add testcase to the list of testCases
-            Console.WriteLine($"QA Engineer {firstName} created TestCase {testCaseID}: {description}"); // print the statement
+            Console.WriteLine($"QA Engineer {firstName} assign task{relatedTask.ID} created TestCase {testCaseID}: {description}"); // print the statement
             return testCase; //return  created testCase
         }
 
@@ -61,7 +61,6 @@ namespace ProjectManagementSystem
             Console.WriteLine(
                 $"QA Engineer {firstName} reported Defect {defectID}: {description} for TestCase {relatedTestCase.TestCaseID}" // print the statement
             );
-            defect.DisplayDefectDetails(); // Display the details of the defect
             return defect; //Return the newly created defect
         }
 
@@ -100,132 +99,6 @@ namespace ProjectManagementSystem
             Console.WriteLine(
                 $"{firstName} is executing QA Engineer responsibilities: creating test cases and reporting defects." // print the statement
             );
-        }
-    }
-
-    public class TestCase
-    {
-        public int TestCaseID { get; set; }
-        public string Description { get; set; }
-        public string Status { get; private set; }
-        public string ExpectedResult { get; set; }
-        public string ActualResult { get; private set; }
-
-        public TestCase(int testCaseID, string description, string expectedResult)
-        {
-            if (testCaseID <= 0)
-            {
-                Console.WriteLine("Error: TestCase ID must be greater than 0.");
-            }
-            else if (string.IsNullOrWhiteSpace(description))
-            {
-                Console.WriteLine("Error: Description cannot be null or empty.");
-            }
-            else if (string.IsNullOrWhiteSpace(expectedResult))
-            {
-                Console.WriteLine("Error: Expected result cannot be null or empty.");
-            }
-            else
-            {
-                TestCaseID = testCaseID;
-                Description = description;
-                ExpectedResult = expectedResult;
-                Status = "Pending";
-            }
-        }
-
-        // Method to update the actual result and determine status
-        public void UpdateActualResult(string actualResult)
-        {
-            ActualResult = actualResult;
-            Status = (ActualResult == ExpectedResult) ? "Pass" : "Fail";
-        }
-
-        // Method to manually update the status
-        public void UpdateTestCaseStatus(string newStatus)
-        {
-            if (
-                newStatus != "Pending"
-                && newStatus != "In Progress"
-                && newStatus != "Pass"
-                && newStatus != "Fail"
-            )
-            {
-                Console.WriteLine(
-                    "Invalid status. Status must be 'Pending', 'In Progress', 'Pass', or 'Fail'."
-                );
-                return;
-            }
-
-            Status = newStatus;
-            Console.WriteLine($"TestCase {TestCaseID} status updated to: {Status}");
-        }
-
-        // Method to display test case details
-        public void DisplayTestCaseDetails()
-        {
-            Console.WriteLine($"TestCase {TestCaseID}: {Description}");
-            Console.WriteLine(
-                $"Expected: {ExpectedResult}, Actual: {ActualResult}, Status: {Status}"
-            );
-        }
-    }
-
-    public class Defect
-    {
-        public int DefectID { get; set; }
-        public string Description { get; set; }
-        public string Status { get; private set; }
-        public string Priority { get; private set; }
-        public TestCase RelatedTestCase { get; set; }
-
-        public Defect(int defectID, string description, TestCase relatedTestCase)
-        {
-            if (defectID <= 0)
-            {
-                Console.WriteLine("Error: Defect ID must be greater than 0.");
-            }
-            else if (string.IsNullOrWhiteSpace(description))
-            {
-                Console.WriteLine("Error: Defect description cannot be null or empty.");
-            }
-            else if (relatedTestCase == null)
-            {
-                Console.WriteLine("Error: Related test case cannot be null.");
-            }
-            else
-            {
-                DefectID = defectID;
-                Description = description;
-                Status = "Open";
-                Priority = "Medium";
-                RelatedTestCase = relatedTestCase;
-            }
-        }
-
-        // Method to update defect status
-        public void UpdateDefectStatus(string newStatus)
-        {
-            if (newStatus != "Open" && newStatus != "In Progress" && newStatus != "Closed")
-            {
-                Console.WriteLine(
-                    "Invalid status. Status must be 'Open', 'In Progress', or 'Closed'."
-                );
-                return;
-            }
-
-            Status = newStatus;
-            Console.WriteLine($"Defect {DefectID} status updated to: {Status}");
-        }
-
-        // Method to display defect details
-        public void DisplayDefectDetails()
-        {
-            Console.WriteLine($"Defect {DefectID}: {Description}");
-            Console.WriteLine(
-                $"Linked to TestCase {RelatedTestCase.TestCaseID}: {RelatedTestCase.Description}"
-            );
-            Console.WriteLine($"Status: {Status}");
         }
     }
 }
