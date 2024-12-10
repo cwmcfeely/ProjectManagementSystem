@@ -47,22 +47,4 @@ public class Intern : Employee
         Console.WriteLine($"{firstName} is learning and assisting the team.");
     }
 
-    public void StartTask(Task task)
-    {
-        if (task != null)
-        {
-            task.Status = TaskStatus.InProgress;
-            Console.WriteLine($"{firstName} started task: {task.Description}");
-        }
-    }
-
-    public void CompleteTask(Task task)
-    {
-        if (task != null)
-        {
-            task.Status = TaskStatus.Completed;
-            Console.WriteLine($"{firstName} completed task: {task.Description}");
-        }
-    }
-
 }

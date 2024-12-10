@@ -47,8 +47,8 @@
             manager.AssignTask(dev2, fourthTask);
 
 
-            intern.StartTask(firstTask);
-            intern.CompleteTask(firstTask);
+            firstTask.StartAssignedTask(intern);
+            firstTask.CompleteAssignedTask(intern);
             intern.GenerateReport();
 
 

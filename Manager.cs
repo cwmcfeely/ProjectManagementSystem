@@ -1,6 +1,6 @@
 namespace ProjectManagementSystem;
 
-public class Manager : Employee, ITrackable //inherit from Employee abstract class and implement ITrackable interface
+public class Manager : Employee //inherit from Employee abstract class and implement ITrackable interface
 {
     
     //constructor for Manager that takes in name and ID
