@@ -12,6 +12,27 @@ namespace ProjectManagementSystem
             DefectsReported = new List<Defect>(); // New list is created to store list of DefectsReported
         }
 
+
+    // Filter tasks assigned to this QA Engineer
+        public override void ViewTasks()
+{
+    Console.WriteLine($"QA Engineer {firstName} {lastName}'s Assigned Tasks:");
+
+    // Filter tasks assigned to this QA Engineer
+    var qaTasks = Tasks.Where(t => t != null).ToList();
+
+    if (!qaTasks.Any())
+    {
+        Console.WriteLine("No tasks assigned to this QA Engineer.");
+        return;
+    }
+
+    foreach (var task in qaTasks)
+    {
+        Console.WriteLine($"- Task ID: {task.ID}, Description: {task.Description}, Status: {task.Status}");
+    }
+}
+
         // Method to create a new test case
         public TestCase CreateTestCase(int testCaseID, string description, string expectedResult, Task relatedTask)
         {

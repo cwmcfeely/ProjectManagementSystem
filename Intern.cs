@@ -10,6 +10,25 @@ public class Intern : Employee
 
     }
 
+    public override void ViewTasks()
+{
+    Console.WriteLine($"Intern {firstName} {lastName}'s Assigned Tasks:");
+
+    // Filter tasks assigned to this Intern
+    var internTasks = Tasks.Where(t => t != null).ToList();
+
+    if (!internTasks.Any())
+    {
+        Console.WriteLine("No tasks assigned to this Intern.");
+        return;
+    }
+
+    foreach (var task in internTasks)
+    {
+        Console.WriteLine($"- Task ID: {task.ID}, Description: {task.Description}, Status: {task.Status}");
+    }
+}
+
     // Iterating through tasks to print task report
     public override void GenerateReport()
     {

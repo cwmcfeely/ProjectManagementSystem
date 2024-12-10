@@ -37,7 +37,7 @@
             //manager.ViewProjects();
 
             //update project status: 
-            manager.UpdateProjectStatus();
+            //manager.UpdateProjectStatus();
             manager.ViewProjects(); //view projects again to see status change
 
             //assign tasks to employees
@@ -52,16 +52,16 @@
             intern.GenerateReport();
 
 
-            qAEngineer.ExecuteRole();
-            TestCase testCase1 = qAEngineer.CreateTestCase(1, "Verify Login", "Success", secondTask);
-            TestCase testCase2 = qAEngineer.CreateTestCase(2, "Verify Logout", "Success", secondTask);
-            testCase1.UpdateActualResult("Failure");
-            if (testCase1.Status == "Fail")
-            {
-                Defect defect1 = qAEngineer.ReportDefect(101, "Login functionality is broken", testCase1);
+            // qAEngineer.ExecuteRole();
+            // TestCase testCase1 = qAEngineer.CreateTestCase(1, "Verify Login", "Success", secondTask);
+            // TestCase testCase2 = qAEngineer.CreateTestCase(2, "Verify Logout", "Success", secondTask);
+            // testCase1.UpdateActualResult("Failure");
+            // if (testCase1.Status == "Fail")
+            // {
+            //     Defect defect1 = qAEngineer.ReportDefect(101, "Login functionality is broken", testCase1);
 
-            }
-            qAEngineer.GenerateReport();
+            // }
+            // qAEngineer.GenerateReport();
 
             // Generate a report for all developers1231234
 
@@ -78,8 +78,11 @@
             qaReport.Generate();
 
             //update task status
-            manager.UpdateStatus();//update task status as a manager (adding to the end as there is user input required)
+            //manager.UpdateStatus();//update task status as a manager (adding to the end as there is user input required)
             manager.GenerateReport(); //generate report for all employees
+
+            dev.ViewTasks();
+            intern.ViewTasks();
         }
     }
 }
