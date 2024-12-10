@@ -28,6 +28,8 @@
             Task thirdTask = new Task(1245, "Learn C# Basics", "High");
             Task fourthTask = new Task(12348, "Develop shopping cart", "High");
 
+            fourthTask.DisplayTaskDetails();
+
             //assign tasks to projects
             manager.AssignTaskToProject(firstTask, project1);
             manager.AssignTaskToProject(secondTask, project1);

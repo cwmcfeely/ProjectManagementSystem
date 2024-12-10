@@ -66,4 +66,13 @@ public class Task
             Console.WriteLine($"Task '{Description}' is already Completed by: {employee.firstName} {employee.lastName} ({employee.Role})");
         }
     }
+
+    // Method to display task details on using .DisplayDetails() it should be called by anyone
+    public void DisplayTaskDetails()
+    {
+        // checks if a project is asssigned to the task, if not add no project assigned
+        string projectName = Project != null ? Project.Name : "No project assigned";
+        Console.WriteLine($"Task ID: {ID}, Description: {Description}, Priority: {Priority}, Status: {Status}, Project: {projectName}");
+    }
+
 }
