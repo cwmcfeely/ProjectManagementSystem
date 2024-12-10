@@ -14,8 +14,11 @@ public enum TaskStatus
     InProgress,
     Completed
 }
-public class Task
+public class Task : ITrackable
 {
+
+    private List<string> actionHistory = new List<string>();
+
     public int ID { get; set; } // get returns the value (of the ID property in this case)
     public string Description { get; set; }
     public TaskStatus Status { get; set; } // Status of the task enum
@@ -31,7 +34,31 @@ public class Task
         Description = description;
         Priority = priority;
         Status = TaskStatus.ToDo; // Default status of a ticket is ToDo
+        LogAction($"Task created: {ID} - '{description}'.");
     }
+
+        // ITrackable Implementation to track all task history
+        public void LogAction(string actionDescription)
+        {
+            string logEntry = $"{DateTime.Now}: {actionDescription}";
+            actionHistory.Add(logEntry);
+            Console.WriteLine($"[LOG] {logEntry}");
+        }
+
+        // ITrackable Implementation to retrieve log history
+        public List<string> GetActionHistory()
+        {
+            // Return a copy to preserve encapsulation
+            return new List<string>(actionHistory); 
+        }
+
+        // ITrackable Implementation to clear all log history
+        public void ClearActionHistory()
+        {
+            actionHistory.Clear();
+            Console.WriteLine("Action history cleared.");
+        }
+
 
     // Method created by Martin, to indicate when a task has been started
     public void StartAssignedTask(Employee employee)
@@ -41,10 +68,12 @@ public class Task
             Status = TaskStatus.InProgress;
             StartedBy = employee;
             StartedByRole = employee.Role;
+            LogAction($"Task '{Description}' is now In Progress. Started by: {employee.firstName} {employee.lastName} ({employee.Role})");
             Console.WriteLine($"Task '{Description}' is now In Progress. Started by: {employee.firstName} {employee.lastName} ({employee.Role})");
         }
         else
         {
+            LogAction($"Task '{Description}' cannot be started as it is already {Status}.");
             Console.WriteLine($"Task '{Description}' cannot be started as it is already {Status}.");
         }
     }
@@ -55,14 +84,17 @@ public class Task
         if (Status == TaskStatus.InProgress)
         {
             Status = TaskStatus.Completed;
+            LogAction($"Task '{Description}' is now Completed by: {employee.firstName} {employee.lastName} ({employee.Role})");
             Console.WriteLine($"Task '{Description}' is now Completed by: {employee.firstName} {employee.lastName} ({employee.Role})");
         }
         else if (Status == TaskStatus.ToDo)
         {
+            LogAction($"Task '{Description}' cannot be completed as it has not started yet.");
             Console.WriteLine($"Task '{Description}' cannot be completed as it has not started yet.");
         }
         else
         {
+            LogAction($"Task '{Description}' is already Completed by: {employee.firstName} {employee.lastName} ({employee.Role})");
             Console.WriteLine($"Task '{Description}' is already Completed by: {employee.firstName} {employee.lastName} ({employee.Role})");
         }
     }

@@ -57,7 +57,7 @@ public abstract class Employee
 }
 
     // Protected AddTask method (only accesible to the sub classes, but will only be used by Manager)
-    protected void AddTask(Task task)
+    protected internal void AddTask(Task task)
     {
         Tasks.Add(task); // Ensure 'task' is of type Task
         Console.WriteLine($"Task '{task.Description}' added for {firstName}.");

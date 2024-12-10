@@ -1,7 +1,9 @@
 namespace ProjectManagementSystem;
 
-public class Project
+public class Project : ITrackable
 {
+    private List<string> actionHistory = new List<string>(); 
+
     public int ProjectID { get; set; }
     public string Name { get; set; }
     public TaskStatus Status { get; set; } = TaskStatus.ToDo; // Default status
@@ -12,6 +14,7 @@ public class Project
         ProjectID = projectId;
         Name = name;
         Tasks = new List<Task>();
+        LogAction($"Project '{name}' created with ID: {projectId}");
     }
 
     public void AddTask(Task task)
@@ -35,4 +38,22 @@ public class Project
             Console.WriteLine($"- Task ID: {task.ID}, Description: {task.Description}, Status: {task.Status}");
         }
     }
+
+    public void LogAction(string actionDescription)
+        {
+            string logEntry = $"{DateTime.Now}: {actionDescription}";
+            actionHistory.Add(logEntry);
+            Console.WriteLine($"[LOG] {logEntry}");
+        }
+
+    public List<string> GetActionHistory()
+        {
+            return new List<string>(actionHistory); // Return a copy to preserve encapsulation
+        }
+
+    public void ClearActionHistory()
+        {
+            actionHistory.Clear();
+            Console.WriteLine("Action history cleared.");
+        }
 }

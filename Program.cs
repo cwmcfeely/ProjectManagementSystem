@@ -51,6 +51,10 @@
 
             firstTask.StartAssignedTask(intern);
             firstTask.CompleteAssignedTask(intern);
+            firstTask.GetActionHistory();
+            firstTask.ClearActionHistory();
+            firstTask.StartAssignedTask(intern);
+            firstTask.CompleteAssignedTask(intern);
             intern.GenerateReport();
 
 
@@ -78,6 +82,8 @@
             // Generate a report for all QA Engineers
             PersonalReport qaReport = new PersonalReport("QA Engineer");
             qaReport.Generate();
+
+            firstTask.GetActionHistory();
 
             //update task status
             //manager.UpdateStatus();//update task status as a manager (adding to the end as there is user input required)
