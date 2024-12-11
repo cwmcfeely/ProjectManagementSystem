@@ -24,10 +24,6 @@ namespace ProjectManagementSystem
             PersonalReport devReport = new PersonalReport("Developer");
             devReport.Generate();
         }
-            {
-        // Developer implementation of View tasks, giving developer the option to filter by tasked assigned to developer
-            }
-        }
 
         // Developer implementation of View tasks, giving developer the option to filter by tasked assigned to developer
         public override void ViewTasks()
@@ -51,31 +47,6 @@ namespace ProjectManagementSystem
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred while viewing tasks: {ex.Message}");
-            }
-        }
-
-        // Implementation of abstract method GenerateReport
-        public override void GenerateReport()
-        {
-            try
-            {
-
-                Console.WriteLine($"Developer Report for {FirstName} {LastName}:");
-
-                if (!Tasks.Any())
-                {
-                    Console.WriteLine("No tasks assigned.");
-                    return;
-                }
-
-                foreach (var task in Tasks)
-                {
-                    task.DisplayTaskDetails(); // Using Task's method to display details
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"An error occurred while generating the report: {ex.Message}");
             }
         }
 

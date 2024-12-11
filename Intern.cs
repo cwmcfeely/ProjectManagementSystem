@@ -10,6 +10,7 @@ public class Intern : Employee
         
     }
 
+    // View own tasks method
     public override void ViewTasks()
     {
         Console.WriteLine($"Intern {FirstName} {LastName}'s Assigned Tasks:");
@@ -29,7 +30,7 @@ public class Intern : Employee
         }
     }
 
-    // Iterating through tasks to print task report
+    // Generate task report based on roles. 
     public override void GenerateReport()
     {
         PersonalReport internReport = new PersonalReport("Intern");

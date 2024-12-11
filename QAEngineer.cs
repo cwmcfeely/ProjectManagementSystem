@@ -107,8 +107,10 @@ namespace ProjectManagementSystem
         // Implementation of abstract methods
         public override void GenerateReport()
         {
+            // Generating role based task report. 
             PersonalReport qaReport = new PersonalReport("QA Engineer");
             qaReport.Generate();
+
             Console.WriteLine($"Generating report for QA Engineer {FirstName}..."); // print the statement
             Console.WriteLine("Test Cases:"); // print the statemnet
             ViewTestCases();// call the method to view testcases from the list
