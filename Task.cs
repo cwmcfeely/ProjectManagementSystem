@@ -68,8 +68,8 @@ public class Task : ITrackable
             Status = TaskStatus.InProgress;
             StartedBy = employee;
             StartedByRole = employee.Role;
-            LogAction($"Task '{Description}' is now In Progress. Started by: {employee.firstName} {employee.lastName} ({employee.Role})");
-            Console.WriteLine($"Task '{Description}' is now In Progress. Started by: {employee.firstName} {employee.lastName} ({employee.Role})");
+            LogAction($"Task '{Description}' is now In Progress. Started by: {employee.FirstName} {employee.LastName} ({employee.Role})");
+            Console.WriteLine($"Task '{Description}' is now In Progress. Started by: {employee.FirstName} {employee.LastName} ({employee.Role})");
         }
         else
         {
@@ -84,8 +84,8 @@ public class Task : ITrackable
         if (Status == TaskStatus.InProgress)
         {
             Status = TaskStatus.Completed;
-            LogAction($"Task '{Description}' is now Completed by: {employee.firstName} {employee.lastName} ({employee.Role})");
-            Console.WriteLine($"Task '{Description}' is now Completed by: {employee.firstName} {employee.lastName} ({employee.Role})");
+            LogAction($"Task '{Description}' is now Completed by: {employee.FirstName} {employee.LastName} ({employee.Role})");
+            Console.WriteLine($"Task '{Description}' is now Completed by: {employee.FirstName} {employee.LastName} ({employee.Role})");
         }
         else if (Status == TaskStatus.ToDo)
         {
@@ -94,8 +94,8 @@ public class Task : ITrackable
         }
         else
         {
-            LogAction($"Task '{Description}' is already Completed by: {employee.firstName} {employee.lastName} ({employee.Role})");
-            Console.WriteLine($"Task '{Description}' is already Completed by: {employee.firstName} {employee.lastName} ({employee.Role})");
+            LogAction($"Task '{Description}' is already Completed by: {employee.FirstName} {employee.LastName} ({employee.Role})");
+            Console.WriteLine($"Task '{Description}' is already Completed by: {employee.FirstName} {employee.LastName} ({employee.Role})");
         }
     }
 
