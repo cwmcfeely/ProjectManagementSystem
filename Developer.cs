@@ -1,3 +1,5 @@
+using System.Linq.Expressions;
+
 namespace ProjectManagementSystem
 {
     public class Developer : Employee // Inherit from Employee abstract class
@@ -30,6 +32,8 @@ namespace ProjectManagementSystem
         // Developer implementation of View tasks, giving developer the option to filter by tasked assigned to developer
         public override void ViewTasks()
         {
+            try
+            {
             Console.WriteLine($"Developer {FirstName} {LastName}'s Assigned Tasks:");
 
             // Filter tasks assigned to this developer
@@ -42,8 +46,36 @@ namespace ProjectManagementSystem
             }
 
             foreach (var task in developerTasks)
+                Console.WriteLine($"- Task ID: {task.ID}, Description: {task.Description}, Status: {task.Status}");
+            }
+            catch (Exception ex)
             {
-                task.DisplayTaskDetails(); // Using Task's method to display details
+                Console.WriteLine($"An error occurred while viewing tasks: {ex.Message}");
+            }
+        }
+
+        // Implementation of abstract method GenerateReport
+        public override void GenerateReport()
+        {
+            try
+            {
+
+                Console.WriteLine($"Developer Report for {FirstName} {LastName}:");
+
+                if (!Tasks.Any())
+                {
+                    Console.WriteLine("No tasks assigned.");
+                    return;
+                }
+
+                foreach (var task in Tasks)
+                {
+                    task.DisplayTaskDetails(); // Using Task's method to display details
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred while generating the report: {ex.Message}");
             }
         }
 
