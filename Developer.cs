@@ -13,12 +13,8 @@ namespace ProjectManagementSystem
         // Implementation of abstract method GenerateReport
         public override void GenerateReport()
         {
-            Console.WriteLine($"Developer Report for {FirstName} {LastName}:");
-
-            foreach (var task in Tasks)
-            {
-                Console.WriteLine($"- Task ID: {task.ID}, Description: {task.Description}, Status: {task.Status}");
-            }
+            PersonalReport devReport = new PersonalReport("Developer");
+            devReport.Generate();
         }
 
         public override void ViewTasks()

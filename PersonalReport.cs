@@ -1,15 +1,17 @@
 using ProjectManagementSystem;
 
-public class PersonalReport : Report
+public class PersonalReport
 {
     private string Role { get; set; }
+    public DateTime GeneratedDate { get; private set; }
 
     public PersonalReport(string role)
     {
         Role = role ?? throw new ArgumentNullException(nameof(role));
+        GeneratedDate = DateTime.Now;
     }
 
-    public override void Generate()
+    public void Generate()
     {
         Console.WriteLine($"\nPersonal Report for {Role}s:");
         Console.WriteLine($"Generated on: {GeneratedDate}");

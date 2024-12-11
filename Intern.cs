@@ -7,7 +7,7 @@ public class Intern : Employee
     public Intern(int employeeId, string FirstName, string LastName)
             : base(employeeId, FirstName, LastName, "Intern")
     {
-
+        
     }
 
     public override void ViewTasks()
@@ -32,13 +32,8 @@ public class Intern : Employee
     // Iterating through tasks to print task report
     public override void GenerateReport()
     {
-        Console.WriteLine($"Intern Report for {FirstName} {LastName}:");
-
-        Console.WriteLine("Tasks:");
-        foreach (var task in Tasks)
-        {
-            Console.WriteLine($"Task ID: {task.ID}, Description: {task.Description}, Status: {task.Status}");
-        }
+        PersonalReport internReport = new PersonalReport("Intern");
+        internReport.Generate();
     }
 
     // Execute role

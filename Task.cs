@@ -63,6 +63,7 @@ public class Task : ITrackable
     // Method created by Martin, to indicate when a task has been started
     public void StartAssignedTask(Employee employee)
     {
+
         if (Status == TaskStatus.ToDo)
         {
             Status = TaskStatus.InProgress;

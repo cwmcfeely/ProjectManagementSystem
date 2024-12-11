@@ -36,10 +36,10 @@
             manager.AssignTaskToProject(thirdTask, project2);
 
             //view the projects
-            //manager.ViewProjects();
+            manager.ViewProjects();
 
-            //update project status: 
-            //manager.UpdateProjectStatus();
+            //update project status:
+            manager.UpdateProjectStatus();
             manager.ViewProjects(); //view projects again to see status change
 
             //assign tasks to employees
@@ -71,28 +71,31 @@
             // }
             // qAEngineer.GenerateReport();
 
-            // Generate a report for all developers1231234
 
-            PersonalReport devReport = new PersonalReport("Developer");
-            devReport.Generate();
-
-
+            // Task by role reports:
+            // Generate a report for all developers
+            dev.GenerateReport();
             // Generate a report for all Interns
-            PersonalReport internReport = new PersonalReport("Intern");
-            internReport.Generate();
-
+            intern.GenerateReport();
             // Generate a report for all QA Engineers
-            PersonalReport qaReport = new PersonalReport("QA Engineer");
-            qaReport.Generate();
+            qAEngineer.GenerateReport();
 
             firstTask.GetActionHistory();
 
+
             //update task status
-            //manager.UpdateStatus();//update task status as a manager (adding to the end as there is user input required)
+            manager.UpdateStatus();//update task status as a manager (adding to the end as there is user input required)
             manager.GenerateReport(); //generate report for all employees
 
-            dev.ViewTasks();
-            intern.ViewTasks();
+
+            //Starting Tasks
+
+            thirdTask.StartAssignedTask(intern);
+
+            // Completing Tasks
+
+            thirdTask.CompleteAssignedTask(intern);
+
         }
     }
 }
