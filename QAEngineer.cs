@@ -5,8 +5,8 @@ namespace ProjectManagementSystem
         private List<TestCase> TestCases; // List to store TestCases
         private List<Defect> DefectsReported; // List to store DefectsReported
 
-        public QAEngineer(int employeeId, string firstName, string lastName)
-            : base(employeeId, firstName, lastName, "QA Engineer") // Constructor that calls the base class constructor
+        public QAEngineer(int employeeId, string FirstName, string LastName)
+            : base(employeeId, FirstName, LastName, "QA Engineer") // Constructor that calls the base class constructor
         {
             TestCases = new List<TestCase>(); // New list is created to store list of TestCases
             DefectsReported = new List<Defect>(); // New list is created to store list of DefectsReported
@@ -16,7 +16,7 @@ namespace ProjectManagementSystem
     // Filter tasks assigned to this QA Engineer
         public override void ViewTasks()
 {
-    Console.WriteLine($"QA Engineer {firstName} {lastName}'s Assigned Tasks:");
+    Console.WriteLine($"QA Engineer {FirstName} {LastName}'s Assigned Tasks:");
 
     // Filter tasks assigned to this QA Engineer
     var qaTasks = Tasks.Where(t => t != null).ToList();
@@ -55,7 +55,7 @@ namespace ProjectManagementSystem
             }
             var testCase = new TestCase(testCaseID, description, expectedResult, relatedTask); // create a new testCase object
             TestCases.Add(testCase); // add testcase to the list of testCases
-            Console.WriteLine($"QA Engineer {firstName} assign task{relatedTask.ID} created TestCase {testCaseID}: {description}"); // print the statement
+            Console.WriteLine($"QA Engineer {FirstName} assign task{relatedTask.ID} created TestCase {testCaseID}: {description}"); // print the statement
             return testCase; //return  created testCase
         }
 
@@ -80,7 +80,7 @@ namespace ProjectManagementSystem
             var defect = new Defect(defectID, description, relatedTestCase); // create a new defect
             DefectsReported.Add(defect); // Add the defect to the list of DefectsReported
             Console.WriteLine(
-                $"QA Engineer {firstName} reported Defect {defectID}: {description} for TestCase {relatedTestCase.TestCaseID}" // print the statement
+                $"QA Engineer {FirstName} reported Defect {defectID}: {description} for TestCase {relatedTestCase.TestCaseID}" // print the statement
             );
             return defect; //Return the newly created defect
         }
@@ -88,7 +88,7 @@ namespace ProjectManagementSystem
         // Method to view all Test Cases
         public void ViewTestCases()
         {
-            Console.WriteLine($"Test Cases created by QA Engineer {firstName}:"); // print the statement
+            Console.WriteLine($"Test Cases created by QA Engineer {FirstName}:"); // print the statement
             foreach (var testCase in TestCases) // Iterate through each test case in the list of test cases
             {
                 testCase.DisplayTestCaseDetails(); // call the method to display testcase details from the list
@@ -107,7 +107,7 @@ namespace ProjectManagementSystem
         // Implementation of abstract methods
         public override void GenerateReport()
         {
-            Console.WriteLine($"Generating report for QA Engineer {firstName}..."); // print the statement
+            Console.WriteLine($"Generating report for QA Engineer {FirstName}..."); // print the statement
             Console.WriteLine("Test Cases:"); // print the statemnet
             ViewTestCases();// call the method to view testcases from the list
             Console.WriteLine("Defects:"); // print the statement
@@ -118,7 +118,7 @@ namespace ProjectManagementSystem
         public override void ExecuteRole()
         {
             Console.WriteLine(
-                $"{firstName} is executing QA Engineer responsibilities: creating test cases and reporting defects." // print the statement
+                $"{FirstName} is executing QA Engineer responsibilities: creating test cases and reporting defects." // print the statement
             );
         }
     }

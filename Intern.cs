@@ -4,15 +4,15 @@
 public class Intern : Employee
 {
     //Using employee class constructor
-    public Intern(int employeeId, string firstName, string lastName)
-            : base(employeeId, firstName, lastName, "Intern")
+    public Intern(int employeeId, string FirstName, string LastName)
+            : base(employeeId, FirstName, LastName, "Intern")
     {
 
     }
 
     public override void ViewTasks()
 {
-    Console.WriteLine($"Intern {firstName} {lastName}'s Assigned Tasks:");
+    Console.WriteLine($"Intern {FirstName} {LastName}'s Assigned Tasks:");
 
     // Filter tasks assigned to this Intern
     var internTasks = Tasks.Where(t => t != null).ToList();
@@ -32,7 +32,7 @@ public class Intern : Employee
     // Iterating through tasks to print task report
     public override void GenerateReport()
     {
-        Console.WriteLine($"Intern Report for {firstName} {lastName}:");
+        Console.WriteLine($"Intern Report for {FirstName} {LastName}:");
 
         Console.WriteLine("Tasks:");
         foreach (var task in Tasks)
@@ -44,7 +44,7 @@ public class Intern : Employee
     // Execute role
     public override void ExecuteRole()
     {
-        Console.WriteLine($"{firstName} is learning and assisting the team.");
+        Console.WriteLine($"{FirstName} is learning and assisting the team.");
     }
 
 }

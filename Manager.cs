@@ -5,8 +5,8 @@ public class Manager : Employee //inherit from Employee abstract class and imple
     
     //constructor for Manager that takes in name and ID
     //"base" keyword calls the constructor in the Employee class, initializing these properties
-    public Manager(int employeeId, string firstName, string lastName) 
-        : base(employeeId, firstName, lastName, "Manager")
+    public Manager(int employeeId, string FirstName, string LastName) 
+        : base(employeeId, FirstName, LastName, "Manager")
     {
     }
     
@@ -21,7 +21,7 @@ public class Manager : Employee //inherit from Employee abstract class and imple
         //verify if the task is actually assigned
         foreach (var t in employee.Tasks)
         {
-            Console.WriteLine($"Assigned Task: {t.ID} - {t.Description} to {employee.firstName}.");
+            Console.WriteLine($"Assigned Task: {t.ID} - {t.Description} to {employee.FirstName}.");
         }
     }
 
@@ -34,7 +34,7 @@ public class Manager : Employee //inherit from Employee abstract class and imple
         //loop through all employees by calling the method from Employee class which is inherited
         foreach (var employee in Employee.GetAllEmployees())
         {
-            Console.WriteLine($"\nEmployee: {employee.firstName} {employee.lastName}");
+            Console.WriteLine($"\nEmployee: {employee.FirstName} {employee.FirstName}");
             //for each employee, loop through each of their tasks
             foreach (var task in employee.Tasks)
             {

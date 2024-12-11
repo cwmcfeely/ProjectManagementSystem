@@ -13,8 +13,8 @@ public abstract class Employee
     private static List<Employee> AllEmployees = new List<Employee>();
     
     public int EmployeeId { get; set; } // Updating id to be an int
-    public string firstName { get; set; }
-    public string lastName { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
     public string Role { get; set; }
 
     // Creating the list for the tasks
@@ -25,8 +25,8 @@ public abstract class Employee
     public Employee(int employeeId, string firstname, string lastname, string role)
     {
         EmployeeId = employeeId;
-        firstName = firstname;
-        lastName = lastname;
+        FirstName = firstname;
+        LastName = lastname;
         Role = role;
         Tasks = new List<Task>(); // Initialize the task list
         
@@ -45,11 +45,11 @@ public abstract class Employee
 {
     if (Tasks.Count == 0)
     {
-        Console.WriteLine($"No tasks assigned to {firstName} {lastName}.");
+        Console.WriteLine($"No tasks assigned to {FirstName} {LastName}.");
         return;
     }
 
-    Console.WriteLine($"Tasks assigned to {firstName} {lastName}:");
+    Console.WriteLine($"Tasks assigned to {FirstName} {LastName}:");
     foreach (var task in Tasks)
     {
         Console.WriteLine($"- Task ID: {task.ID}, Description: {task.Description}, Status: {task.Status}");
@@ -60,7 +60,7 @@ public abstract class Employee
     protected internal void AddTask(Task task)
     {
         Tasks.Add(task); // Ensure 'task' is of type Task
-        Console.WriteLine($"Task '{task.Description}' added for {firstName}.");
+        Console.WriteLine($"Task '{task.Description}' added for {FirstName}.");
     }
     
     // Method created by Zoubilia to find Task by ID

@@ -33,7 +33,7 @@ public class PersonalReport : Report
 
         foreach (var employee in employeeRoles)
         {
-            Console.WriteLine($"\nEmployee: {employee.firstName} {employee.lastName}");
+            Console.WriteLine($"\nEmployee: {employee.FirstName} {employee.LastName}");
 
             if (employee.Tasks.Count == 0)
             {
