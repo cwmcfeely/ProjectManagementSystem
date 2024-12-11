@@ -1,8 +1,8 @@
 namespace ProjectManagementSystem;
 public class TestCase
 {
-    public int TestCaseID { get; set; }
-    public string Description { get; set; }
+    public int TestCaseID { get; private set; }
+    public string Description { get; private set; }
     public string Status { get; private set; }
     public string ExpectedResult { get; set; }
     public string ActualResult { get; private set; }

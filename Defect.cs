@@ -2,8 +2,8 @@ namespace ProjectManagementSystem;
 
 public class Defect
 {
-    public int DefectID { get; set; }
-    public string Description { get; set; }
+    public int DefectID { get; private set; }
+    public string Description { get; private set; }
     public string Status { get; private set; }
     public string Priority { get; private set; }
     public TestCase RelatedTestCase { get; set; }

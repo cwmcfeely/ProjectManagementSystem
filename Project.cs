@@ -4,8 +4,8 @@ public class Project : ITrackable
 {
     private List<string> actionHistory = new List<string>();
 
-    public int ProjectID { get; set; }
-    public string Name { get; set; }
+    public int ProjectID { get; private set; }
+    public string Name { get; private set; }
     public TaskStatus Status { get; set; } = TaskStatus.ToDo; // Default status
     public List<Task> Tasks { get; set; }
 

@@ -3,7 +3,7 @@ namespace ProjectManagementSystem
     public class Developer : Employee // Inherit from Employee abstract class
     {
         // Property specific to Developer
-        public string ProgrammingLanguage { get; set; }
+        public string ProgrammingLanguage { get; private set; }
 
         // Constructor that calls the base class constructor and initializes programmingLanguage
         public Developer(int employeeId, string FirstName, string LastName, string programmingLanguage) : base(employeeId, FirstName, LastName, "Developer")

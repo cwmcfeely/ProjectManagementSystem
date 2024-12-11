@@ -19,8 +19,8 @@ public class Task : ITrackable
 
     private List<string> actionHistory = new List<string>();
 
-    public int ID { get; set; } // get returns the value (of the ID property in this case)
-    public string Description { get; set; }
+    public int ID { get; private set; } // get returns the value (of the ID property in this case)
+    public string Description { get; private set; }
     public TaskStatus Status { get; set; } // Status of the task enum
     public string Priority { get; set; }
 

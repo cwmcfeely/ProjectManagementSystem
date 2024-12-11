@@ -12,7 +12,7 @@ public abstract class Employee
     //creating a list to store employees (this is for Manager specific mathod to generate report)
     private static List<Employee> AllEmployees = new List<Employee>();
 
-    public int EmployeeId { get; set; } // Updating id to be an int
+    public int EmployeeId { get; private set; } // Updating id to be an int
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Role { get; set; }
