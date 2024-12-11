@@ -7,6 +7,7 @@
 
             Developer dev = new Developer(123, "Conor", "McFeely", "C#");
             Developer dev2 = new Developer(124, "Sean", "Owen", "Python");
+            Developer dev3 = new Developer(189, "Bob", "McBob", "Ruby");
             Intern intern = new Intern(8936, "Martin", "Fortuna");
             QAEngineer qAEngineer = new QAEngineer(102, "Jothika", "Tamilarasan");
             Manager manager = new Manager(7689, "Zouboulia", "Fanuda");
