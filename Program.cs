@@ -48,6 +48,8 @@
             manager.AssignTask(intern, thirdTask);
             manager.AssignTask(dev2, fourthTask);
 
+            dev2.RemoveTask(fourthTask);
+
 
             firstTask.StartAssignedTask(intern);
             firstTask.CompleteAssignedTask(intern);

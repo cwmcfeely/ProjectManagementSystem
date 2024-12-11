@@ -2,22 +2,22 @@ namespace ProjectManagementSystem;
 
 public class Manager : Employee //inherit from Employee abstract class and implement ITrackable interface
 {
-    
+
     //constructor for Manager that takes in name and ID
     //"base" keyword calls the constructor in the Employee class, initializing these properties
-    public Manager(int employeeId, string FirstName, string LastName) 
+    public Manager(int employeeId, string FirstName, string LastName)
         : base(employeeId, FirstName, LastName, "Manager")
     {
     }
-    
+
     //create list to hold projects
     private List<Project> Projects { get; } = new List<Project>();
-    
+
     //create method that takes in an Employee and a Task so that a manager can assign a task to an employee
     public void AssignTask(Employee employee, Task task)
     {
         employee.AddTask(task); // Use the protected AddTask from Employee
-        
+
         //verify if the task is actually assigned
         foreach (var t in employee.Tasks)
         {
@@ -49,7 +49,7 @@ public class Manager : Employee //inherit from Employee abstract class and imple
     {
         Console.WriteLine("Manager is performing manager role");
     }
-    
+
     public Project CreateProject(int projectId, string name)
     {
         //create new instance of project class
@@ -57,11 +57,11 @@ public class Manager : Employee //inherit from Employee abstract class and imple
         //add this project to the list of projects for this manager
         Projects.Add(project);
         Console.WriteLine($"Project '{name}' created successfully by manager");
-        
+
         //return project we just created
         return project;
     }
-    
+
     public void AssignTaskToProject(Task task, Project project)
     {
         //check if the project exists in the list of projects from this manager
@@ -137,5 +137,5 @@ public class Manager : Employee //inherit from Employee abstract class and imple
             Console.WriteLine();//adding space for readability
         }
     }
-    
+
 }

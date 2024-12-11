@@ -23,7 +23,7 @@ public class Task : ITrackable
     public string Description { get; set; }
     public TaskStatus Status { get; set; } // Status of the task enum
     public string Priority { get; set; }
-    
+
     public Project Project { get; set; } //adding this to assign tasks to projects by referencing a project property here
     public Employee StartedBy { get; private set; } // Tracks the employee who started the task
     public string StartedByRole { get; private set; } // Tracks the role of the employee
@@ -37,27 +37,27 @@ public class Task : ITrackable
         LogAction($"Task created: {ID} - '{description}'.");
     }
 
-        // ITrackable Implementation to track all task history
-        public void LogAction(string actionDescription)
-        {
-            string logEntry = $"{DateTime.Now}: {actionDescription}";
-            actionHistory.Add(logEntry);
-            Console.WriteLine($"[LOG] {logEntry}");
-        }
+    // ITrackable Implementation to track all task history
+    public void LogAction(string actionDescription)
+    {
+        string logEntry = $"{DateTime.Now}: {actionDescription}";
+        actionHistory.Add(logEntry);
+        Console.WriteLine($"[LOG] {logEntry}");
+    }
 
-        // ITrackable Implementation to retrieve log history
-        public List<string> GetActionHistory()
-        {
-            // Return a copy to preserve encapsulation
-            return new List<string>(actionHistory); 
-        }
+    // ITrackable Implementation to retrieve log history
+    public List<string> GetActionHistory()
+    {
+        // Return a copy to preserve encapsulation
+        return new List<string>(actionHistory);
+    }
 
-        // ITrackable Implementation to clear all log history
-        public void ClearActionHistory()
-        {
-            actionHistory.Clear();
-            Console.WriteLine("Action history cleared.");
-        }
+    // ITrackable Implementation to clear all log history
+    public void ClearActionHistory()
+    {
+        actionHistory.Clear();
+        Console.WriteLine("Action history cleared.");
+    }
 
 
     // Method created by Martin, to indicate when a task has been started

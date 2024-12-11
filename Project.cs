@@ -2,7 +2,7 @@ namespace ProjectManagementSystem;
 
 public class Project : ITrackable
 {
-    private List<string> actionHistory = new List<string>(); 
+    private List<string> actionHistory = new List<string>();
 
     public int ProjectID { get; set; }
     public string Name { get; set; }
@@ -40,20 +40,20 @@ public class Project : ITrackable
     }
 
     public void LogAction(string actionDescription)
-        {
-            string logEntry = $"{DateTime.Now}: {actionDescription}";
-            actionHistory.Add(logEntry);
-            Console.WriteLine($"[LOG] {logEntry}");
-        }
+    {
+        string logEntry = $"{DateTime.Now}: {actionDescription}";
+        actionHistory.Add(logEntry);
+        Console.WriteLine($"[LOG] {logEntry}");
+    }
 
     public List<string> GetActionHistory()
-        {
-            return new List<string>(actionHistory); // Return a copy to preserve encapsulation
-        }
+    {
+        return new List<string>(actionHistory); // Return a copy to preserve encapsulation
+    }
 
     public void ClearActionHistory()
-        {
-            actionHistory.Clear();
-            Console.WriteLine("Action history cleared.");
-        }
+    {
+        actionHistory.Clear();
+        Console.WriteLine("Action history cleared.");
+    }
 }

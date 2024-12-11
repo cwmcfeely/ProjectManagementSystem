@@ -1,7 +1,9 @@
-namespace ProjectManagementSystem {
+namespace ProjectManagementSystem
+{
 
-    public interface ITrackable {
-    
+    public interface ITrackable
+    {
+
         /// Logs an action with a description and timestamp.
         void LogAction(string actionDescription);
 

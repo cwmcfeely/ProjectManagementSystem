@@ -8,10 +8,10 @@ namespace ProjectManagementSystem;
 
 public abstract class Employee
 {
-    
+
     //creating a list to store employees (this is for Manager specific mathod to generate report)
     private static List<Employee> AllEmployees = new List<Employee>();
-    
+
     public int EmployeeId { get; set; } // Updating id to be an int
     public string FirstName { get; set; }
     public string LastName { get; set; }
@@ -29,11 +29,11 @@ public abstract class Employee
         LastName = lastname;
         Role = role;
         Tasks = new List<Task>(); // Initialize the task list
-        
+
         //add new employee to employee list automatically
         AllEmployees.Add(this);
     }
-    
+
     //since list of employees is private but manager needs to access it for reports, creating public method that returns the private list (encapsulation)
     public static List<Employee> GetAllEmployees()
     {
@@ -42,19 +42,19 @@ public abstract class Employee
 
     // Method by Conor so Employees and derivaties of employees can view tasks
     public virtual void ViewTasks()
-{
-    if (Tasks.Count == 0)
     {
-        Console.WriteLine($"No tasks assigned to {FirstName} {LastName}.");
-        return;
-    }
+        if (Tasks.Count == 0)
+        {
+            Console.WriteLine($"No tasks assigned to {FirstName} {LastName}.");
+            return;
+        }
 
-    Console.WriteLine($"Tasks assigned to {FirstName} {LastName}:");
-    foreach (var task in Tasks)
-    {
-        Console.WriteLine($"- Task ID: {task.ID}, Description: {task.Description}, Status: {task.Status}");
+        Console.WriteLine($"Tasks assigned to {FirstName} {LastName}:");
+        foreach (var task in Tasks)
+        {
+            Console.WriteLine($"- Task ID: {task.ID}, Description: {task.Description}, Status: {task.Status}");
+        }
     }
-}
 
     // Protected AddTask method (only accesible to the sub classes, but will only be used by Manager)
     protected internal void AddTask(Task task)
@@ -62,7 +62,7 @@ public abstract class Employee
         Tasks.Add(task); // Ensure 'task' is of type Task
         Console.WriteLine($"Task '{task.Description}' added for {FirstName}.");
     }
-    
+
     // Method created by Zoubilia to find Task by ID
     public Task GetTaskById(int taskId)
     {
@@ -75,14 +75,14 @@ public abstract class Employee
                 return task; //if found, return task
             }
         }
-        return null; 
+        return null;
     }
 
     // Method created by Zoubilia to update task status
     public void UpdateStatus()
     {
         Console.WriteLine("Enter the task ID to update:");
-        
+
         //read user input (task ID), parse it as an integer and store it in the taskId variable
         int taskId = int.Parse(Console.ReadLine());
 
@@ -110,7 +110,7 @@ public abstract class Employee
                 Console.WriteLine("Invalid input");
                 return;
         }
-        
+
         //fetch the task by ID
         var task = GetTaskById(taskId);
 
@@ -123,7 +123,21 @@ public abstract class Employee
         {
             Console.WriteLine($"Task with ID {taskId} not found.");
         }
-        
+
+    }
+
+    public bool RemoveTask(Task task)
+    {
+        if (Tasks.Remove(task)) // Uses List<T>.Remove() to remove by reference
+        {
+            Console.WriteLine($"Task '{task.Description}' removed from {FirstName} {LastName}'s task list.");
+            return true;
+        }
+        else
+        {
+            Console.WriteLine($"Task '{task.Description}' not found in {FirstName} {LastName}'s task list.");
+            return false;
+        }
     }
 
     // Abstract methods for class Employee showing on Class diagram

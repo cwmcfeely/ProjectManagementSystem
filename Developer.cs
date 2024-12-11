@@ -13,27 +13,32 @@ namespace ProjectManagementSystem
         // Implementation of abstract method GenerateReport
         public override void GenerateReport()
         {
-            Console.WriteLine($"{FirstName} is generating a developer-specific report.");
+            Console.WriteLine($"Developer Report for {FirstName} {LastName}:");
+
+            foreach (var task in Tasks)
+            {
+                Console.WriteLine($"- Task ID: {task.ID}, Description: {task.Description}, Status: {task.Status}");
+            }
         }
 
         public override void ViewTasks()
-{
-    Console.WriteLine($"Developer {FirstName} {LastName}'s Assigned Tasks:");
+        {
+            Console.WriteLine($"Developer {FirstName} {LastName}'s Assigned Tasks:");
 
-    // Filter tasks assigned to this developer
-    var developerTasks = Tasks.Where(t => t != null).ToList();
+            // Filter tasks assigned to this developer
+            var developerTasks = Tasks.Where(t => t != null).ToList();
 
-    if (!developerTasks.Any())
-    {
-        Console.WriteLine("No tasks assigned to this developer.");
-        return;
-    }
+            if (!developerTasks.Any())
+            {
+                Console.WriteLine("No tasks assigned to this developer.");
+                return;
+            }
 
-    foreach (var task in developerTasks)
-    {
-        Console.WriteLine($"- Task ID: {task.ID}, Description: {task.Description}, Status: {task.Status}");
-    }
-}
+            foreach (var task in developerTasks)
+            {
+                Console.WriteLine($"- Task ID: {task.ID}, Description: {task.Description}, Status: {task.Status}");
+            }
+        }
 
         // Implementation of abstract method ExecuteRole
         public override void ExecuteRole()
