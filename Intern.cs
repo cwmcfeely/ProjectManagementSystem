@@ -33,8 +33,15 @@ public class Intern : Employee
     // Generate task report based on roles. 
     public override void GenerateReport()
     {
-        PersonalReport internReport = new PersonalReport("Intern");
-        internReport.Generate();
+        try
+        {
+            PersonalReport internReport = new PersonalReport("Intern");
+            internReport.Generate();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error generating report, error message: {ex.Message}");
+        }
     }
 
     // Execute role
