@@ -55,7 +55,7 @@ namespace ProjectManagementSystem
             }
             var testCase = new TestCase(testCaseID, description, expectedResult, relatedTask); // create a new testCase object
             TestCases.Add(testCase); // add testcase to the list of testCases
-            Console.WriteLine($"QA Engineer {FirstName} assign task{relatedTask.ID} created TestCase {testCaseID}: {description}"); // print the statement
+            Console.WriteLine($"Manager assigned taskID {relatedTask.ID} for QA Engineer created TestCase {testCaseID}: {description}"); // print the statement
             return testCase; //return  created testCase
         }
 

@@ -62,13 +62,13 @@
 
 
             qAEngineer.ExecuteRole();
-            TestCase testCase1 = qAEngineer.CreateTestCase(1, "Verify Login", "Success", secondTask);
-            TestCase testCase2 = qAEngineer.CreateTestCase(2, "Verify Logout", "Success", secondTask);
+            secondTask.StartAssignedTask(qAEngineer);
+            TestCase testCase1 = qAEngineer.CreateTestCase(1, "Verify user login functionality with valid and invalid credentials", "Success", secondTask);
             testCase1.UpdateActualResult("Failure");
             if (testCase1.Status == "Fail")
             {
-                 Defect defect1 = qAEngineer.ReportDefect(101, "Login functionality is broken", testCase1);
-             }
+                Defect defect1 = qAEngineer.ReportDefect(101, "Login fails for valid credentials", testCase1);
+            }
 
             // Task by role reports:
             // Generate a report for all developers
