@@ -9,7 +9,7 @@ namespace ProjectManagementSystem;
 public abstract class Employee
 {
 
-    //creating a list to store employees (this is for Manager specific mathod to generate report)
+    //creating a list to store employees (this is for Manager specific method to generate report)
     private static List<Employee> AllEmployees = new List<Employee>();
 
     public int EmployeeId { get; private set; } // Updating id to be an int
@@ -40,7 +40,7 @@ public abstract class Employee
         return AllEmployees;
     }
 
-    // Method by Conor so Employees and derivaties of employees can view tasks
+    // Method by Conor so Employees and derivatives of employees can view tasks
     public virtual void ViewTasks()
     {
         if (Tasks.Count == 0)
@@ -56,14 +56,14 @@ public abstract class Employee
         }
     }
 
-    // Protected AddTask method (only accesible to the sub classes, but will only be used by Manager)
+    // Protected AddTask method (only accessible to the sub classes, but will only be used by Manager)
     protected internal void AddTask(Task task)
     {
         Tasks.Add(task); // Ensure 'task' is of type Task
         Console.WriteLine($"Task '{task.Description}' added for {FirstName}.");
     }
 
-    // Method created by Zoubilia to find Task by ID
+    // Method created by Zouboulia to find Task by ID
     public Task GetTaskById(int taskId)
     {
         //search task by ID
@@ -78,15 +78,15 @@ public abstract class Employee
         return null;
     }
 
-    // Method created by Zoubilia to update task status
+    // Method created by Zouboulia to update task status
     public void UpdateStatus()
     {
-        Console.WriteLine("Enter the task ID to update:");
+        Console.WriteLine("\nEnter the task ID to update:");
 
         //read user input (task ID), parse it as an integer and store it in the taskId variable
         int taskId = int.Parse(Console.ReadLine());
 
-        Console.WriteLine("Select a status for the task:");
+        Console.WriteLine("\nSelect a status for the task:");
         Console.WriteLine("1. To Do");
         Console.WriteLine("2. In Progress");
         Console.WriteLine("3. Completed");
@@ -117,7 +117,7 @@ public abstract class Employee
         if (task != null)
         {
             task.Status = selectedStatus; //if task is found, update its status to selected status
-            Console.WriteLine($"Task '{task.Description}' status updated to {selectedStatus}.");
+            Console.WriteLine($"Task '{task.Description}' status updated to {selectedStatus}.\n");
         }
         else
         {

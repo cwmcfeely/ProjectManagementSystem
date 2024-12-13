@@ -34,7 +34,7 @@ public class Manager : Employee //inherit from Employee abstract class and imple
         //loop through all employees by calling the method from Employee class which is inherited
         foreach (var employee in Employee.GetAllEmployees())
         {
-            Console.WriteLine($"\nEmployee: {employee.FirstName} {employee.FirstName}");
+            Console.WriteLine($"\nEmployee: {employee.FirstName} {employee.LastName}");
             //for each employee, loop through each of their tasks
             foreach (var task in employee.Tasks)
             {
@@ -47,7 +47,7 @@ public class Manager : Employee //inherit from Employee abstract class and imple
 
     public override void ExecuteRole()
     {
-        Console.WriteLine("Manager is performing manager role");
+        Console.WriteLine("\nManager is performing manager role\n");
     }
 
     public Project CreateProject(int projectId, string name)
@@ -56,7 +56,7 @@ public class Manager : Employee //inherit from Employee abstract class and imple
         var project = new Project(projectId, name);
         //add this project to the list of projects for this manager
         Projects.Add(project);
-        Console.WriteLine($"Project '{name}' created successfully by manager");
+        Console.WriteLine($"Project '{name}' created successfully by manager\n");
 
         //return project we just created
         return project;

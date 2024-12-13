@@ -31,7 +31,7 @@ public class Project : ITrackable
 
     public void DisplayDetails()
     {
-        Console.WriteLine($"Project: {Name}, Status: {Status}");
+        Console.WriteLine($"Project: {Name}, ID:{ProjectID} Status: {Status}");
         Console.WriteLine("Tasks:");
         foreach (var task in Tasks)
         {
@@ -48,12 +48,13 @@ public class Project : ITrackable
 
     public List<string> GetActionHistory()
     {
+        Console.WriteLine(""); //Styling console output
         return new List<string>(actionHistory); // Return a copy to preserve encapsulation
     }
 
     public void ClearActionHistory()
     {
         actionHistory.Clear();
-        Console.WriteLine("Action history cleared.");
+        Console.WriteLine("\nAction history cleared.");
     }
 }

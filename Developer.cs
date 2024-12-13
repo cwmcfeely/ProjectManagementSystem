@@ -30,7 +30,7 @@ namespace ProjectManagementSystem
         {
             try
             {
-            Console.WriteLine($"Developer {FirstName} {LastName}'s Assigned Tasks:");
+            Console.WriteLine($"\nDeveloper {FirstName} {LastName}'s Assigned Tasks:");
 
             // Filter tasks assigned to this developer
             var developerTasks = Tasks.Where(t => t != null).ToList();
@@ -53,7 +53,7 @@ namespace ProjectManagementSystem
         // Implementation of abstract method ExecuteRole
         public override void ExecuteRole()
         {
-            Console.WriteLine($"{FirstName} is writing code in {ProgrammingLanguage}.");
+            Console.WriteLine($"\n{FirstName} is writing code in {ProgrammingLanguage}.\n");
         }
     }
 }

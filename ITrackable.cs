@@ -4,7 +4,7 @@ namespace ProjectManagementSystem
     public interface ITrackable
     {
 
-        /// Logs an action with a description and timestamp.
+        /// Logs an action with a description and time stamp.
         void LogAction(string actionDescription);
 
         /// Retrieves the history of logged actions.A list of strings representing the action history
