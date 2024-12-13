@@ -9,7 +9,7 @@ namespace ProjectManagementSystem;
 public abstract class Employee
 {
 
-    //creating a list to store employees (this is for Manager specific method to generate report)
+    //creating a list to store employees (this is for Manager specific mathod to generate report)
     private static List<Employee> AllEmployees = new List<Employee>();
 
     public int EmployeeId { get; private set; } // Updating id to be an int
@@ -24,6 +24,18 @@ public abstract class Employee
 
     public Employee(int employeeId, string firstname, string lastname, string role)
     {
+        if (employeeId <= 0) // Check if the employee ID is valid (greater than zero)
+            throw new ArgumentException("Employee ID must be greater than zero.");
+
+        if (string.IsNullOrWhiteSpace(firstname)) // Make sure the first name is not empty
+            throw new ArgumentException("First name cannot be null or empty.");
+
+        if (string.IsNullOrWhiteSpace(lastname)) // Make sure the last name is not empty
+            throw new ArgumentException("Last name cannot be null or empty.");
+
+        if (string.IsNullOrWhiteSpace(role)) // Make sure the role is provided
+            throw new ArgumentException("Role cannot be null or empty.");
+
         EmployeeId = employeeId;
         FirstName = firstname;
         LastName = lastname;
@@ -40,10 +52,10 @@ public abstract class Employee
         return AllEmployees;
     }
 
-    // Method by Conor so Employees and derivatives of employees can view tasks
+    // Method by Conor so Employees and derivaties of employees can view tasks
     public virtual void ViewTasks()
     {
-        if (Tasks.Count == 0)
+        if (Tasks == null || Tasks.Count == 0) // Check if there are no tasks assigned
         {
             Console.WriteLine($"No tasks assigned to {FirstName} {LastName}.");
             return;
@@ -56,16 +68,28 @@ public abstract class Employee
         }
     }
 
-    // Protected AddTask method (only accessible to the sub classes, but will only be used by Manager)
+    // Protected AddTask method (only accesible to the sub classes, but will only be used by Manager)
     protected internal void AddTask(Task task)
     {
-        Tasks.Add(task); // Ensure 'task' is of type Task
+        if (task == null) // Check if the task provided is not null
+        {
+            Console.WriteLine("Cannot add a null task.");
+            return;
+        }
+
+        Tasks.Add(task); // Add the task to the list
         Console.WriteLine($"Task '{task.Description}' added for {FirstName}.");
     }
 
-    // Method created by Zouboulia to find Task by ID
+    // Method created by Zoubilia to find Task by ID
     public Task GetTaskById(int taskId)
     {
+        if (taskId <= 0) // Check if the task ID is valid (greater than zero)
+        {
+            Console.WriteLine("Task ID must be greater than zero.");
+            return null;
+        }
+
         //search task by ID
         foreach (var employee in Employee.GetAllEmployees()) //iterate through all employees
         {
@@ -78,23 +102,26 @@ public abstract class Employee
         return null;
     }
 
-    // Method created by Zouboulia to update task status
+    // Method created by Zoubilia to update task status
     public void UpdateStatus()
     {
-        Console.WriteLine("\nEnter the task ID to update:");
+        Console.WriteLine("Enter the task ID to update:");
 
-        //read user input (task ID), parse it as an integer and store it in the taskId variable
-        int taskId = int.Parse(Console.ReadLine());
+        if (!int.TryParse(Console.ReadLine(), out int taskId)) // Validate the task ID input
+        {
+            Console.WriteLine("Invalid task ID. Please enter a valid number.");
+            return;
+        }
 
-        Console.WriteLine("\nSelect a status for the task:");
+        Console.WriteLine("Select a status for the task:");
         Console.WriteLine("1. To Do");
         Console.WriteLine("2. In Progress");
         Console.WriteLine("3. Completed");
 
-        string input = Console.ReadLine(); //read user input for task status selection and store in variable
-        TaskStatus selectedStatus; //declare a variable to store the selected task status (of type TaskStatus)
+        string input = Console.ReadLine(); // Get user input for task status
+        TaskStatus selectedStatus; // Variable to store the selected task status
 
-        //handle user input for task status
+        // Handle user input for task status
         switch (input)
         {
             case "1":
@@ -116,8 +143,8 @@ public abstract class Employee
 
         if (task != null)
         {
-            task.Status = selectedStatus; //if task is found, update its status to selected status
-            Console.WriteLine($"Task '{task.Description}' status updated to {selectedStatus}.\n");
+            task.Status = selectedStatus; // Update the task status
+            Console.WriteLine($"Task '{task.Description}' status updated to {selectedStatus}.");
         }
         else
         {
@@ -128,7 +155,13 @@ public abstract class Employee
 
     public bool RemoveTask(Task task)
     {
-        if (Tasks.Remove(task)) // Uses List<T>.Remove() to remove by reference
+        if (task == null) // Check if the task provided is not null
+        {
+            Console.WriteLine("Cannot remove a null task.");
+            return false;
+        }
+
+        if (Tasks.Remove(task)) // Remove the task from the list
         {
             Console.WriteLine($"Task '{task.Description}' removed from {FirstName} {LastName}'s task list.");
             return true;
