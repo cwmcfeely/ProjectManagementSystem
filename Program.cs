@@ -22,12 +22,12 @@
             Task firstTask = new Task(1234, "Fix Bug", "High");
             Task secondTask = new Task(1235, "Test login", "Medium");
             Task thirdTask = new Task(1245, "Learn C# Basics", "High");
-            Task fourthTask = new Task(12348, "Develop shopping cart", "High");
+            Task fourthTask = new Task(12348, "Develop shopping cart", "High"); 
 
 
             manager.ExecuteRole();
 
-            //Assign tasks to projects
+            //Assign tasks to projects. FourthTask will not be assigned to a project
             manager.AssignTaskToProject(firstTask, project1);
             manager.AssignTaskToProject(secondTask, project1);
             manager.AssignTaskToProject(thirdTask, project2);
