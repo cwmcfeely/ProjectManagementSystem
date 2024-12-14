@@ -19,6 +19,10 @@ public abstract class Employee
 
     // Creating the list for the tasks
     protected internal List<Task> Tasks { get; private set; }
+    
+    //expose Tasks list as ReadOnly for Unit testing
+    public IReadOnlyList<Task> ReadOnlyTasks => Tasks;
+    
 
     // Constructor, method called when an object is created
 
