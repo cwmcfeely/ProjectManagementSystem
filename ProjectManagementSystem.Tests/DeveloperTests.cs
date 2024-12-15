@@ -5,13 +5,13 @@ namespace ProjectManagementSystem.Tests
 {
     public class DeveloperTests
     {
-        [Fact]
+        [Fact] // Attribute to mark this method as a test
         public void Constructor_ValidInput_CreatesInstance()
         {
-            // Arrange & Act
+            // Arrange and act, creates a new developer instance with valid inputs
             var developer = new Developer(1, "John", "Doe", "C#");
 
-            // Assert
+            // verify that the developer object is created with the correct properties
             Assert.Equal(1, developer.EmployeeId);
             Assert.Equal("John", developer.FirstName);
             Assert.Equal("Doe", developer.LastName);
@@ -22,7 +22,7 @@ namespace ProjectManagementSystem.Tests
         [Fact]
         public void Constructor_EmptyProgrammingLanguage_ThrowsArgumentException()
         {
-            // Arrange & Act & Assert
+            // Verify crreating a developet with an empty programmy language throws an exception
             Assert.Throws<ArgumentException>(() =>
                 new Developer(1, "John", "Doe", ""));
         }
@@ -30,7 +30,7 @@ namespace ProjectManagementSystem.Tests
         [Fact]
         public void Constructor_NullProgrammingLanguage_ThrowsArgumentException()
         {
-            // Arrange & Act & Assert
+            // Verify crreating a developet with an null programmy language throws an exception
             Assert.Throws<ArgumentException>(() =>
                 new Developer(1, "John", "Doe", null));
         }
@@ -38,15 +38,15 @@ namespace ProjectManagementSystem.Tests
         [Fact]
         public void ViewTasks_WithNoTasks_DisplaysEmptyMessage()
         {
-            // Arrange
+            // Create a Developer and set up console output capture
             var developer = new Developer(1, "John", "Doe", "C#");
             var output = new StringWriter();
             Console.SetOut(output);
 
-            // Act
+            // Call view tasks method
             developer.ViewTasks();
 
-            // Assert
+            // Veify the correct message is displayed
             Assert.Contains("No tasks assigned to this developer", output.ToString());
         }
 
