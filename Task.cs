@@ -129,13 +129,13 @@ public class Task : ITrackable
         }
         else if (Status == TaskStatus.ToDo)
         {
-            LogAction($"Task '{Description}' cannot be completed as it has not started yet.");
-            Console.WriteLine($"Task '{Description}' cannot be completed as it has not started yet.");
+            LogAction($"Task '{Description}' cannot be completed as it has not started yet.\n");
+            Console.WriteLine($"Task '{Description}' cannot be completed as it has not started yet.\n");
         }
         else
         {
-            LogAction($"Task '{Description}' is already Completed by: {employee.FirstName} {employee.LastName} ({employee.Role})");
-            Console.WriteLine($"Task '{Description}' is already Completed by: {employee.FirstName} {employee.LastName} ({employee.Role})");
+            LogAction($"Task '{Description}' is already Completed by: {employee.FirstName} {employee.LastName} ({employee.Role})\n");
+            Console.WriteLine($"Task '{Description}' is already Completed by: {employee.FirstName} {employee.LastName} ({employee.Role})\n");
         }
     }
 

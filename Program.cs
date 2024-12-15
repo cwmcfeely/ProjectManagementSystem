@@ -13,18 +13,17 @@
             Manager manager = new Manager(7689, "Zouboulia", "Fanuda");
             
             //Creating tasks
-            Task firstTask = new Task(1234, "Fix Bug", "High");
-            Task secondTask = new Task(1235, "Test login", "Medium");
-            Task thirdTask = new Task(1245, "Learn C# Basics", "High");
-            Task fourthTask = new Task(12348, "Develop shopping cart", "High"); 
-            
-            
+            Task firstTask = new Task(1, "Fix Bug", "High");
+            Task secondTask = new Task(2, "Test login", "Medium");
+            Task thirdTask = new Task(3, "Learn C# Basics", "High");
+            Task fourthTask = new Task(4, "Develop shopping cart", "High"); 
+            Task task = new Task(5, "Task to be completed", "High");
             
             //Managers//
             
             //Creating projects
-            var project1 = manager.CreateProject(7868, "PROJECT 1");
-            var project2 = manager.CreateProject(0987, "PROJECT 2");
+            var project1 = manager.CreateProject(12, "PROJECT 1");
+            var project2 = manager.CreateProject(13, "PROJECT 2");
 
             //Assign tasks to projects. FourthTask will not be assigned to a project
             manager.AssignTaskToProject(firstTask, project1);
@@ -36,6 +35,7 @@
             manager.AssignTask(qAEngineer, secondTask);
             manager.AssignTask(intern, thirdTask);
             manager.AssignTask(dev2, fourthTask);
+            manager.AssignTask(qAEngineer, task);
             
             //generate report for all employee
             manager.GenerateReport(); 
@@ -88,7 +88,6 @@
             firstTask.GetActionHistory();
             firstTask.ClearActionHistory();
             
-            
             //user input methods//
             
             //Update project status:
@@ -96,7 +95,11 @@
             manager.ViewProjects(); //view projects again to see status change
             
             //Update task status 
-            qAEngineer.UpdateStatus();
+            //qAEngineer.UpdateStatus();
+            manager.UpdateStatus();
+            
+            //Complete tasks
+            task.CompleteAssignedTask(dev);
 
         }
     }

@@ -80,7 +80,7 @@ public class Manager : Employee //inherit from Employee abstract class and imple
 
     public void UpdateProjectStatus()
     {
-        Console.WriteLine("Enter the project ID to update: (Choose 7868 or 987");
+        Console.WriteLine("Enter the project ID to update: (Choose 12 or 13)");
 
         //read input and parse it to integer
         int projectId = int.Parse(Console.ReadLine());
