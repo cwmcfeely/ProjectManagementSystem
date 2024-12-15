@@ -61,8 +61,6 @@
             dev.ViewTasks();
             // Execute role
             dev.ExecuteRole();
-            //Update task status 
-            dev.UpdateStatus();
 
             //Interns
 
@@ -72,8 +70,6 @@
             intern.ViewTasks();
             // Execute role
             intern.ExecuteRole();
-            //Update task status 
-            intern.UpdateStatus();
 
             // QA Engineers
 
