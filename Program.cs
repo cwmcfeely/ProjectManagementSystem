@@ -95,8 +95,7 @@
             manager.ViewProjects(); //view projects again to see status change
             
             //Update task status 
-            //qAEngineer.UpdateStatus();
-            manager.UpdateStatus();
+            qAEngineer.UpdateStatus();
             
             //Complete tasks
             task.CompleteAssignedTask(dev);
