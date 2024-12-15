@@ -11,49 +11,43 @@
             Intern intern = new Intern(8936, "Martin", "Fortuna");
             QAEngineer qAEngineer = new QAEngineer(102, "Jothika", "Tamilarasan");
             Manager manager = new Manager(7689, "Zouboulia", "Fanuda");
-
-
-            //Creating projects
-            var project1 = manager.CreateProject(7868, "PROJECT 1");
-            var project2 = manager.CreateProject(0987, "PROJECT 2");
-
-
+            
             //Creating tasks
             Task firstTask = new Task(1234, "Fix Bug", "High");
             Task secondTask = new Task(1235, "Test login", "Medium");
             Task thirdTask = new Task(1245, "Learn C# Basics", "High");
             Task fourthTask = new Task(12348, "Develop shopping cart", "High"); 
-
-
-            manager.ExecuteRole();
+            
+            
+            
+            //Managers//
+            
+            //Creating projects
+            var project1 = manager.CreateProject(7868, "PROJECT 1");
+            var project2 = manager.CreateProject(0987, "PROJECT 2");
 
             //Assign tasks to projects. FourthTask will not be assigned to a project
             manager.AssignTaskToProject(firstTask, project1);
             manager.AssignTaskToProject(secondTask, project1);
             manager.AssignTaskToProject(thirdTask, project2);
 
-            //View the projects
-            manager.ViewProjects();
-
-            //Update project status:
-            manager.UpdateProjectStatus();
-            manager.ViewProjects(); //view projects again to see status change
-
             //Assigning tasks to employees
             manager.AssignTask(dev, firstTask);
             manager.AssignTask(qAEngineer, secondTask);
             manager.AssignTask(intern, thirdTask);
             manager.AssignTask(dev2, fourthTask);
-
-            //Generate task by employee report
-            manager.GenerateReport();
-
-            fourthTask.DisplayTaskDetails();
-            firstTask.GetActionHistory();
+            
+            //generate report for all employee
+            manager.GenerateReport(); 
 
             //Tasks//
+            
+            //display task details and task logs/action history
+            fourthTask.DisplayTaskDetails();
+            firstTask.GetActionHistory();
+            
 
-            //Developers
+            //Developers//
 
             //Generate developer task report
             dev.GenerateReport();
@@ -62,7 +56,7 @@
             // Execute role
             dev.ExecuteRole();
 
-            //Interns
+            //Interns//
 
             //Generate intern task report
             intern.GenerateReport();
@@ -71,7 +65,7 @@
             // Execute role
             intern.ExecuteRole();
 
-            // QA Engineers
+            //QA Engineers//
 
             //Generate qa engineer task report
             qAEngineer.GenerateReport();
@@ -87,20 +81,22 @@
                 Defect defect1 = qAEngineer.ReportDefect(101, "Login fails for valid credentials", testCase1);
             }
 
-            //Update task status 
-            qAEngineer.UpdateStatus();
-
             //dev2.RemoveTask(fourthTask);
 
-            // Task details 
+            // Task details //
             fourthTask.DisplayTaskDetails();
             firstTask.GetActionHistory();
             firstTask.ClearActionHistory();
-
-
-            //Manager update task status
-            manager.UpdateStatus();//update task status as a manager (adding to the end as there is user input required)
-            manager.GenerateReport(); //generate report for all employee
+            
+            
+            //user input methods//
+            
+            //Update project status:
+            manager.UpdateProjectStatus();
+            manager.ViewProjects(); //view projects again to see status change
+            
+            //Update task status 
+            qAEngineer.UpdateStatus();
 
         }
     }
