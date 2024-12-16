@@ -47,7 +47,7 @@ namespace ProjectManagementSystem.Tests
             developer.ViewTasks();
 
             // Veify the correct message is displayed
-            Assert.Contains("No tasks assigned to this developer", output.ToString());
+            Assert.Contains("No tasks assigned to this developer.", output.ToString());
         }
 
         [Fact]
