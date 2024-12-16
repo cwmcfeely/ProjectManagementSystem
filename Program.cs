@@ -88,17 +88,20 @@
             firstTask.GetActionHistory();
             firstTask.ClearActionHistory();
             
+            //update task status in program - this matters for completing task method below
+            manager.UpdateStatus(5, TaskStatus.InProgress);
+            
+            //Complete tasks
+            task.CompleteAssignedTask(dev);
+            
             //user input methods//
             
             //Update project status:
             manager.UpdateProjectStatus();
             manager.ViewProjects(); //view projects again to see status change
             
-            //Update task status 
+            //Update task status with console
             qAEngineer.UpdateStatus();
-            
-            //Complete tasks
-            task.CompleteAssignedTask(dev);
 
         }
     }

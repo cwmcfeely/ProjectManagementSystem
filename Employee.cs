@@ -156,6 +156,24 @@ public abstract class Employee
         }
 
     }
+    
+    //creating overload method to update status directly in program.cs for printing purposes 
+    //this relieves user from having to interract with the console (if user doesn't want to do so)
+    public void UpdateStatus(int taskId, TaskStatus status)
+    {
+        // get task by Id
+        var task = GetTaskById(taskId);
+
+        if (task != null) //check that the task exists
+        {
+            task.Status = status; //update the status of task
+            Console.WriteLine($"Task '{task.Description}' status updated to {status}");
+        }
+        else
+        {
+            Console.WriteLine($"Task with Id {taskId} does not exist");
+        }
+    }
 
     public bool RemoveTask(Task task)
     {
