@@ -101,20 +101,21 @@ public class Manager : Employee //inherit from Employee abstract class and imple
         Console.WriteLine("3. Completed");
 
         string input = Console.ReadLine(); //read user input
-        TaskStatus selectedStatus; //declare var to store project status
+        
+        string selectedStatus; //declare var to store project status
 
 
         //handle user input
         switch (input)
         {
             case "1":
-                selectedStatus = TaskStatus.ToDo;
+                selectedStatus = "To Do";
                 break;
             case "2":
-                selectedStatus = TaskStatus.InProgress;
+                selectedStatus = "In Progress";
                 break;
             case "3":
-                selectedStatus = TaskStatus.Completed;
+                selectedStatus = "Completed";
                 break;
             default:
                 Console.WriteLine("Invalid input. Status not updated.");
@@ -122,7 +123,7 @@ public class Manager : Employee //inherit from Employee abstract class and imple
         }
 
         //update status of project by calling method in project class and pasisng it the status defined here by user
-        project.UpdateStatus(selectedStatus);
+        project.UpdateStatus(project, selectedStatus);
 
     }
 

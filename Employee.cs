@@ -109,7 +109,7 @@ public abstract class Employee
     // Method created by Zoubilia to update task status
     public void UpdateStatus()
     {
-        Console.WriteLine("Enter the task ID to update:");
+        Console.WriteLine("Enter the task ID to update: (choose 1, 2, 3, 4, or 5");
 
         if (!int.TryParse(Console.ReadLine(), out int taskId)) // Validate the task ID input
         {
