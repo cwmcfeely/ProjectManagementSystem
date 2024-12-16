@@ -47,7 +47,7 @@ public class Intern : Employee
     // Execute role
     public override void ExecuteRole()
     {
-        Console.WriteLine($"\n{FirstName} is learning and assisting the team.\n");
+        Console.WriteLine($"\n {FirstName} is learning and assisting the team.");
     }
 
 }

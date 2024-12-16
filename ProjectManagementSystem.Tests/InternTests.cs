@@ -41,7 +41,7 @@ namespace ProjectManagementSystem.ProjectManagementSystem.Tests
 
                 // Assert: Check that intern name is correctly passed to console output
                 string output = stringWriter.ToString().Trim();
-                Assert.Contains("\n John is learning and assisting the team", output);
+                Assert.Contains("John is learning and assisting the team.", output);
             }
         }
     }
