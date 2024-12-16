@@ -1,4 +1,7 @@
-namespace ProjectManagementSystem.Tests
+using Xunit;
+using ProjectManagementSystem;
+
+namespace ProjectManagementSystem.ProjectManagementSystem.Tests
 {
     public class QAEngineerTest
     {
