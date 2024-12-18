@@ -27,12 +27,33 @@ This system is designed to be adaptable and simple to extend, making it well-sui
 
 ## Getting Started
 
-### Prerequisites :computer:
-To run this project, you will need:
-- **Visual Studio**: <https://visualstudio.microsoft.com/> installed on your computer (For most users, Visual Studio Community is sufficient) 
-- *.NET desktop development* or *ASP.NET and web development* workload
+### Prerequisites 💻
+To run this project, you'll need:
+- .NET SDK (6.0 or later)
+- Git
 
-### Installation :arrow_down:
-Download the project by cloning the repository:
-   
-   **GitHub**: <https://github.com/cwmcfeely/ProjectManagementSystem.git/>
+
+### Open Terminal 🖥️
+**Windows**
+- Press `Win + X` and select "Terminal" or
+- Right-click and select "Open in Terminal"
+
+**macOS**
+- Press `Command + Space`, type "Terminal" and press Enter or
+- Open Finder > Applications > Utilities > Terminal
+
+### Installation and Setup ⬇️
+1. Clone the repository:
+git clone https://github.com/cwmcfeely/ProjectManagementSystem.git
+cd ProjectManagementSystem
+
+### Build and Run 🚀
+dotnet clean
+dotnet restore
+dotnet build
+dotnet run
+
+### Build and Test 🛠️
+dotnet clean
+dotnet build
+dotnet test
