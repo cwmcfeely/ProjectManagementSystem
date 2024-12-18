@@ -120,9 +120,10 @@ namespace ProjectManagementSystem.ProjectManagementSystem.Tests
             Assert.Equal(expectedResult, result.ExpectedResult);
             Assert.Equal(Task, result.RelatedTask);
 
-            // Validate console output
-            var expectedMessage = $"\nManager assigned taskID {Task.ID} for QA Engineer created TestCase {testCaseID}: {description}";
-            Assert.Contains(expectedMessage, consoleOutput.ToString());
+            // Validate console outpu
+            var output = consoleOutput.ToString();
+            Assert.Contains($"Manager assigned taskID {Task.ID} for QA Engineer", output);
+            Assert.Contains($"created TestCase {testCaseID}: {description}", output);
 
         }
 

@@ -5,13 +5,11 @@ namespace ProjectManagementSystem.Tests
 {
     public class DeveloperTests
     {
-        [Fact] // Attribute to mark this method as a test
+        [Fact]
         public void Constructor_ValidInput_CreatesInstance()
         {
-            // Arrange and act, creates a new developer instance with valid inputs
             var developer = new Developer(1, "John", "Doe", "C#");
 
-            // verify that the developer object is created with the correct properties
             Assert.Equal(1, developer.EmployeeId);
             Assert.Equal("John", developer.FirstName);
             Assert.Equal("Doe", developer.LastName);
@@ -19,50 +17,47 @@ namespace ProjectManagementSystem.Tests
             Assert.Equal("Developer", developer.Role);
         }
 
-        [Fact]
-        public void Constructor_EmptyProgrammingLanguage_ThrowsArgumentException()
+        [Theory]
+        [InlineData("")]
+        [InlineData(" ")]
+        public void Constructor_EmptyProgrammingLanguage_ThrowsArgumentException(string language)
         {
-            // Verify crreating a developet with an empty programmy language throws an exception
             Assert.Throws<ArgumentException>(() =>
-                new Developer(1, "John", "Doe", ""));
+                new Developer(1, "John", "Doe", language));
         }
 
         [Fact]
         public void Constructor_NullProgrammingLanguage_ThrowsArgumentException()
         {
-            // Verify crreating a developet with an null programmy language throws an exception
+            string? nullLanguage = null;
             Assert.Throws<ArgumentException>(() =>
-                new Developer(1, "John", "Doe", null));
+                new Developer(1, "John", "Doe", nullLanguage));
         }
 
         [Fact]
         public void ViewTasks_WithNoTasks_DisplaysEmptyMessage()
         {
-            // Create a Developer and set up console output capture
             var developer = new Developer(1, "John", "Doe", "C#");
-            var output = new StringWriter();
-            Console.SetOut(output);
+            var consoleOutput = new StringWriter();
+            Console.SetOut(consoleOutput);
 
-            // Call view tasks method
             developer.ViewTasks();
 
-            // Veify the correct message is displayed
-            Assert.Contains("No tasks assigned to this developer.", output.ToString());
+            var output = consoleOutput.ToString();
+            Assert.Contains($"Developer John Doe's Assigned Tasks:", output);
+            Assert.Contains("No tasks assigned to this developer.", output);
         }
 
         [Fact]
         public void ExecuteRole_DisplaysCorrectMessage()
         {
-            // Arrange
             var developer = new Developer(1, "John", "Doe", "C#");
-            var output = new StringWriter();
-            Console.SetOut(output);
+            var consoleOutput = new StringWriter();
+            Console.SetOut(consoleOutput);
 
-            // Act
             developer.ExecuteRole();
 
-            // Assert
-            Assert.Contains("John is writing code in C#", output.ToString());
+            Assert.Contains($"\nJohn is writing code in C#", consoleOutput.ToString());
         }
     }
 }
