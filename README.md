@@ -53,6 +53,8 @@ cd ProjectManagementSystem
 - dotnet build
 - dotnet run
 
+![Application Running](./images/RunAppInTerminal.png)
+
 ### Build and Test 🛠️
 - dotnet clean
 - dotnet build
