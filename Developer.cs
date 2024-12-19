@@ -30,19 +30,19 @@ namespace ProjectManagementSystem
         {
             try
             {
-            Console.WriteLine($"\nDeveloper {FirstName} {LastName}'s Assigned Tasks:");
+                Console.WriteLine($"Developer {FirstName} {LastName}'s Assigned Tasks:");
 
-            // Filter tasks assigned to this developer
-            var developerTasks = Tasks.Where(t => t != null).ToList();
+                // Filter tasks assigned to this developer
+                var developerTasks = Tasks.Where(t => t != null).ToList();
 
-            if (!developerTasks.Any())
-            {
-                Console.WriteLine("No tasks assigned to this developer.");
-                return;
-            }
+                if (!developerTasks.Any())
+                {
+                    Console.WriteLine("No tasks assigned to this developer.");
+                    return;
+                }
 
-            foreach (var task in developerTasks)
-                Console.WriteLine($"- Task ID: {task.ID}, Description: {task.Description}, Status: {task.Status}");
+                foreach (var task in developerTasks)
+                    Console.WriteLine($"- Task ID: {task.ID}, Description: {task.Description}, Status: {task.Status}");
             }
             catch (Exception ex)
             {
