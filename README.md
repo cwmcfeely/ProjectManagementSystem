@@ -48,12 +48,12 @@ git clone https://github.com/cwmcfeely/ProjectManagementSystem.git
 cd ProjectManagementSystem
 
 ### Build and Run 🚀
-dotnet clean
-dotnet restore
-dotnet build
-dotnet run
+- dotnet clean
+- dotnet restore
+- dotnet build
+- dotnet run
 
 ### Build and Test 🛠️
-dotnet clean
-dotnet build
-dotnet test
+- dotnet clean
+- dotnet build
+- dotnet test
