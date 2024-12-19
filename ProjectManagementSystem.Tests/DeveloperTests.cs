@@ -44,7 +44,7 @@ namespace ProjectManagementSystem.Tests
             developer.ViewTasks();
 
             var output = consoleOutput.ToString();
-            Assert.Contains($"Developer John Doe's Assigned Tasks:", output);
+            Assert.Contains("Developer John Doe's Assigned Tasks:", output);
             Assert.Contains("No tasks assigned to this developer.", output);
         }
 
