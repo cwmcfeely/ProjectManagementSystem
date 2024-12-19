@@ -84,15 +84,20 @@
             //dev2.RemoveTask(fourthTask);
 
             // Task details //
+            Console.WriteLine();
             fourthTask.DisplayTaskDetails();
+            Console.WriteLine();
             firstTask.GetActionHistory();
             firstTask.ClearActionHistory();
             
             //update task status in program - this matters for completing task method below
+            Console.WriteLine();
             manager.UpdateStatus(5, TaskStatus.InProgress);
             
             //Complete tasks
+            Console.WriteLine();
             task.CompleteAssignedTask(dev);
+            Console.WriteLine();
             
             //user input methods//
             
